@@ -95,11 +95,13 @@ function NEWMODULE_cron () {
 function NEWMODULE_grades($NEWMODULEid) {
 /// Must return an array of grades for a given instance of this module, 
 /// indexed by user.  It also returns a maximum allowed grade.
+///
+///    $return->grades = array of grades;
+///    $return->maxgrade = maximum allowed grade;
+///
+///    return $return;
 
-    $return->grades = NULL;
-    $return->maxgrade = NULL;
-
-    return $return;
+   return NULL;
 }
 
 function NEWMODULE_get_participants($NEWMODULEid) {
