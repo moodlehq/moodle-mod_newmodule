@@ -111,6 +111,23 @@ function NEWMODULE_get_participants($NEWMODULEid) {
     return false;
 }
 
+function NEWMODULE_scale_used ($NEWMODULEid,$scaleid) {
+//This function returns if a scale is being used by one NEWMODULE
+//it it has support for grading and scales. Commented code should be
+//modified if necessary. See forum, glossary or journal modules
+//as reference.
+   
+    $return = false;
+
+    //$rec = get_record("NEWMODULE","id","$NEWMODULEid","scale","-$scaleid");
+    //
+    //if (!empty($rec)  && !empty($scaleid)) {
+    //    $return = true;
+    //}
+   
+    return $return;
+}
+
 //////////////////////////////////////////////////////////////////////////////////////
 /// Any other NEWMODULE functions go here.  Each of them must have a name that 
 /// starts with NEWMODULE_
