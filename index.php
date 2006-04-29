@@ -6,7 +6,7 @@
     require_once("../../config.php");
     require_once("lib.php");
 
-    require_variable($id);   // course
+    $id = required_param('id', PARAM_INT);   // course
 
     if (! $course = get_record("course", "id", $id)) {
         error("Course ID is incorrect");
@@ -26,7 +26,7 @@
 /// Print the header
 
     if ($course->category) {
-        $navigation = "<A HREF=\"../../course/view.php?id=$course->id\">$course->shortname</A> ->";
+        $navigation = "<a href=\"../../course/view.php?id=$course->id\">$course->shortname</a> ->";
     }
 
     print_header("$course->shortname: $strNEWMODULEs", "$course->fullname", "$navigation $strNEWMODULEs", "", "", true, "", navmenu($course));
@@ -59,10 +59,10 @@
     foreach ($NEWMODULEs as $NEWMODULE) {
         if (!$NEWMODULE->visible) {
             //Show dimmed if the mod is hidden
-            $link = "<A class=\"dimmed\" HREF=\"view.php?id=$NEWMODULE->coursemodule\">$NEWMODULE->name</A>";
+            $link = "<a class=\"dimmed\" href=\"view.php?id=$NEWMODULE->coursemodule\">$NEWMODULE->name</a>";
         } else {
             //Show normal if the mod is visible
-            $link = "<A HREF=\"view.php?id=$NEWMODULE->coursemodule\">$NEWMODULE->name</A>";
+            $link = "<a href=\"view.php?id=$NEWMODULE->coursemodule\">$NEWMODULE->name</a>";
         }
 
         if ($course->format == "weeks" or $course->format == "topics") {
@@ -72,7 +72,7 @@
         }
     }
 
-    echo "<BR>";
+    echo "<br />";
 
     print_table($table);
 

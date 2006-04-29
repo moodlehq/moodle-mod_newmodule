@@ -1,4 +1,4 @@
-<?PHP
+<?PHP // $Id$
 
 function NEWMODULE_upgrade($oldversion) {
 /// This function does anything necessary to upgrade 
@@ -6,7 +6,7 @@ function NEWMODULE_upgrade($oldversion) {
 
     global $CFG;
 
-    if ($oldversion < 2003092800) {
+    if ($oldversion < 2006042900) {
 
        # Do something ...
 

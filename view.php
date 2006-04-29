@@ -6,8 +6,8 @@
     require_once("../../config.php");
     require_once("lib.php");
 
-    optional_variable($id);    // Course Module ID, or
-    optional_variable($a);     // NEWMODULE ID
+    $id = optional_param('id', 0, PARAM_INT); // Course Module ID, or
+    $a  = optional_param('a', 0, PARAM_INT);  // NEWMODULE ID
 
     if ($id) {
         if (! $cm = get_record("course_modules", "id", $id)) {
@@ -41,14 +41,14 @@
 /// Print the page header
 
     if ($course->category) {
-        $navigation = "<A HREF=\"../../course/view.php?id=$course->id\">$course->shortname</A> ->";
+        $navigation = "<a href=\"../../course/view.php?id=$course->id\">$course->shortname</a> ->";
     }
 
     $strNEWMODULEs = get_string("modulenameplural", "NEWMODULE");
     $strNEWMODULE  = get_string("modulename", "NEWMODULE");
 
     print_header("$course->shortname: $NEWMODULE->name", "$course->fullname",
-                 "$navigation <A HREF=index.php?id=$course->id>$strNEWMODULEs</A> -> $NEWMODULE->name", 
+                 "$navigation <a href=index.php?id=$course->id>$strNEWMODULEs</a> -> $NEWMODULE->name", 
                   "", "", true, update_module_button($cm->id, $course->id, $strNEWMODULE), 
                   navmenu($course, $cm));
 
