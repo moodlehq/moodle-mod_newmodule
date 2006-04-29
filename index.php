@@ -47,13 +47,13 @@
 
     if ($course->format == "weeks") {
         $table->head  = array ($strweek, $strname);
-        $table->align = array ("CENTER", "LEFT");
+        $table->align = array ("center", "left");
     } else if ($course->format == "topics") {
         $table->head  = array ($strtopic, $strname);
-        $table->align = array ("CENTER", "LEFT", "LEFT", "LEFT");
+        $table->align = array ("center", "left", "left", "left");
     } else {
         $table->head  = array ($strname);
-        $table->align = array ("LEFT", "LEFT", "LEFT");
+        $table->align = array ("left", "left", "left");
     }
 
     foreach ($NEWMODULEs as $NEWMODULE) {
