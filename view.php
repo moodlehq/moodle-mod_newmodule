@@ -42,6 +42,8 @@
 
     if ($course->category) {
         $navigation = "<a href=\"../../course/view.php?id=$course->id\">$course->shortname</a> ->";
+    } else {
+        $navigation = '';
     }
 
     $strNEWMODULEs = get_string("modulenameplural", "NEWMODULE");

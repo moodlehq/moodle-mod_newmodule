@@ -27,6 +27,8 @@
 
     if ($course->category) {
         $navigation = "<a href=\"../../course/view.php?id=$course->id\">$course->shortname</a> ->";
+    } else {
+        $navigation = '';
     }
 
     print_header("$course->shortname: $strNEWMODULEs", "$course->fullname", "$navigation $strNEWMODULEs", "", "", true, "", navmenu($course));
