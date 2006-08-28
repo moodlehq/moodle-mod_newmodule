@@ -1,6 +1,12 @@
-<?PHP // $Id$
+<?php // $Id$
+/**
+ * This page lists all the instances of NEWMODULE in a particular course
+ *
+ * @author 
+ * @version $Id$
+ * @package NEWMODULE
+ **/
 
-/// This page lists all the instances of NEWMODULE in a particular course
 /// Replace NEWMODULE with the name of your module
 
     require_once("../../config.php");

@@ -1,6 +1,12 @@
-<?PHP  // $Id$
+<?php  // $Id$
+/**
+ * This page prints a particular instance of NEWMODULE
+ * 
+ * @author 
+ * @version $Id$
+ * @package NEWMODULE
+ **/
 
-/// This page prints a particular instance of NEWMODULE
 /// (Replace NEWMODULE with the name of your module)
 
     require_once("../../config.php");
