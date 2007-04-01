@@ -1,19 +1,19 @@
 <?php  // $Id$
 /**
- * This page prints a particular instance of NEWMODULE
+ * This page prints a particular instance of newmodule
  * 
  * @author 
  * @version $Id$
- * @package NEWMODULE
+ * @package newmodule
  **/
 
-/// (Replace NEWMODULE with the name of your module)
+/// (Replace newmodule with the name of your module)
 
     require_once("../../config.php");
     require_once("lib.php");
 
     $id = optional_param('id', 0, PARAM_INT); // Course Module ID, or
-    $a  = optional_param('a', 0, PARAM_INT);  // NEWMODULE ID
+    $a  = optional_param('a', 0, PARAM_INT);  // newmodule ID
 
     if ($id) {
         if (! $cm = get_record("course_modules", "id", $id)) {
@@ -24,25 +24,25 @@
             error("Course is misconfigured");
         }
     
-        if (! $NEWMODULE = get_record("NEWMODULE", "id", $cm->instance)) {
+        if (! $newmodule = get_record("newmodule", "id", $cm->instance)) {
             error("Course module is incorrect");
         }
 
     } else {
-        if (! $NEWMODULE = get_record("NEWMODULE", "id", $a)) {
+        if (! $newmodule = get_record("newmodule", "id", $a)) {
             error("Course module is incorrect");
         }
-        if (! $course = get_record("course", "id", $NEWMODULE->course)) {
+        if (! $course = get_record("course", "id", $newmodule->course)) {
             error("Course is misconfigured");
         }
-        if (! $cm = get_coursemodule_from_instance("NEWMODULE", $NEWMODULE->id, $course->id)) {
+        if (! $cm = get_coursemodule_from_instance("newmodule", $newmodule->id, $course->id)) {
             error("Course Module ID was incorrect");
         }
     }
 
     require_login($course->id);
 
-    add_to_log($course->id, "NEWMODULE", "view", "view.php?id=$cm->id", "$NEWMODULE->id");
+    add_to_log($course->id, "newmodule", "view", "view.php?id=$cm->id", "$newmodule->id");
 
 /// Print the page header
 
@@ -52,12 +52,12 @@
         $navigation = '';
     }
 
-    $strNEWMODULEs = get_string("modulenameplural", "NEWMODULE");
-    $strNEWMODULE  = get_string("modulename", "NEWMODULE");
+    $strnewmodules = get_string("modulenameplural", "newmodule");
+    $strnewmodule  = get_string("modulename", "newmodule");
 
-    print_header("$course->shortname: $NEWMODULE->name", "$course->fullname",
-                 "$navigation <a href=index.php?id=$course->id>$strNEWMODULEs</a> -> $NEWMODULE->name", 
-                  "", "", true, update_module_button($cm->id, $course->id, $strNEWMODULE), 
+    print_header("$course->shortname: $newmodule->name", "$course->fullname",
+                 "$navigation <a href=index.php?id=$course->id>$strnewmodules</a> -> $newmodule->name", 
+                  "", "", true, update_module_button($cm->id, $course->id, $strnewmodule), 
                   navmenu($course, $cm));
 
 /// Print the main part of the page
@@ -67,5 +67,4 @@
 
 /// Finish the page
     print_footer($course);
-
 ?>

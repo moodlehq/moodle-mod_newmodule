@@ -1,13 +1,13 @@
 <?php // $Id$
 /**
- * This page lists all the instances of NEWMODULE in a particular course
+ * This page lists all the instances of newmodule in a particular course
  *
  * @author 
  * @version $Id$
- * @package NEWMODULE
+ * @package newmodule
  **/
 
-/// Replace NEWMODULE with the name of your module
+/// Replace newmodule with the name of your module
 
     require_once("../../config.php");
     require_once("lib.php");
@@ -20,13 +20,13 @@
 
     require_login($course->id);
 
-    add_to_log($course->id, "NEWMODULE", "view all", "index.php?id=$course->id", "");
+    add_to_log($course->id, "newmodule", "view all", "index.php?id=$course->id", "");
 
 
-/// Get all required strings
+/// Get all required stringsnewmodule
 
-    $strNEWMODULEs = get_string("modulenameplural", "NEWMODULE");
-    $strNEWMODULE  = get_string("modulename", "NEWMODULE");
+    $strnewmodules = get_string("modulenameplural", "newmodule");
+    $strnewmodule  = get_string("modulename", "newmodule");
 
 
 /// Print the header
@@ -37,12 +37,12 @@
         $navigation = '';
     }
 
-    print_header("$course->shortname: $strNEWMODULEs", "$course->fullname", "$navigation $strNEWMODULEs", "", "", true, "", navmenu($course));
+    print_header("$course->shortname: $strnewmodules", "$course->fullname", "$navigation $strnewmodules", "", "", true, "", navmenu($course));
 
 /// Get all the appropriate data
 
-    if (! $NEWMODULEs = get_all_instances_in_course("NEWMODULE", $course)) {
-        notice("There are no NEWMODULEs", "../../course/view.php?id=$course->id");
+    if (! $newmodules = get_all_instances_in_course("newmodule", $course)) {
+        notice("There are no newmodules", "../../course/view.php?id=$course->id");
         die;
     }
 
@@ -64,17 +64,17 @@
         $table->align = array ("left", "left", "left");
     }
 
-    foreach ($NEWMODULEs as $NEWMODULE) {
-        if (!$NEWMODULE->visible) {
+    foreach ($newmodules as $newmodule) {
+        if (!$newmodule->visible) {
             //Show dimmed if the mod is hidden
-            $link = "<a class=\"dimmed\" href=\"view.php?id=$NEWMODULE->coursemodule\">$NEWMODULE->name</a>";
+            $link = "<a class=\"dimmed\" href=\"view.php?id=$newmodule->coursemodule\">$newmodule->name</a>";
         } else {
             //Show normal if the mod is visible
-            $link = "<a href=\"view.php?id=$NEWMODULE->coursemodule\">$NEWMODULE->name</a>";
+            $link = "<a href=\"view.php?id=$newmodule->coursemodule\">$newmodule->name</a>";
         }
 
         if ($course->format == "weeks" or $course->format == "topics") {
-            $table->data[] = array ($NEWMODULE->section, $link);
+            $table->data[] = array ($newmodule->section, $link);
         } else {
             $table->data[] = array ($link);
         }

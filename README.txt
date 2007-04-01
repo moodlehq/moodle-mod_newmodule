@@ -1,57 +1,45 @@
-USING THE NEW MODULE TEMPLATE
------------------------------
+This README file is based off the original README written
+by Martin Dougiamas 
+However it as well as some of the code has been re-written so that the 
+module will work with Moodle 1.7 and beyond (with luck)
 
-1. Unzip the archive and read this file  ;-)
 
-2. Change the name of the directory to your new module name.
-   This name should be a single english word, if possible, 
-   all lowercase and with only a-z characters. eg widget
+The following steps should get you up and running with
+this module template code.
+
+1. Unzip the archive and read this file
+
+2. The module folder MUST be lower case before Moodle will recognize
+   it. 
 
 3. Edit all the files in this directory and change all the 
-   instances of NEWMODULE to your new module name (eg widget).
+   instances of newmodule to your new module name (eg widget).
 
-4. Edit db/mysql.sql and put in the SQL database definitions 
-   for your module.  The names of any table definitions you create 
-   there should use the prefix 'prefix_' instead of 'mdl_' 
-   (or whatever you've configured your moodle installation to use 
-   as a table prefix) (optional)
+4. Place the newmodule folder into the /mod folder of the moodle
+   directory. 
 
-5. Edit db/mysql.php and change all the instances of NEWMODULE
-   to your new module name.  (optional)
+5. As Admin goto Notifications and you should find the module's
+   databases successfully created
 
-6. Do the same for db/postgres7.sql and db/postgres7.php as you 
-   did for db/mysql.sql and db/mysql.php (optional)
+6. Now go to Modules then to Activities in the Site Administration block
+   And you should find that this newmodule has been added
+   to the list of recognized modules.
 
-7. Create one or more language files for your module in 
-   lang/LANG/NEWMODULE.php where LANG is the language or 
-   languages you are creating the module for use with.  (usually
-   this will be 'en') Use one of the language files for another
-   module as a template for the file.
-
-8. Visit the admin page and your module should be noticed and
-   registered as a new entry in the table "modules".
-
-Now you can start adding code to the .php and .html files in 
-this directory to make it do what you want!
-
-Note about database changes:
-
-  Every time you update the database schema in the db directory, 
-  remember to 
-  
-    - edit version.php with a higher version number
-    - edit db/mysql.php with an execute_sql() call that 
-      upgrades the databases to the new format (see core 
-      modules for examples)
-  
-  and then visit the admin page to actually upgrade your databases.
+7. You may now proceed to run your own code in an attempt to
+   develop for moodle. Good luck with that.
 
 
-If you have problems, questions, suggestions etc then visit 
+For help with developing code for moodle, visit
 the "Activity modules" developers forum in the online 
 course called "Using Moodle" at http:/* moodle.org */
 
-Or email me:  martin@moodle.com
+Or email Martin Dougiamas at:  martin@moodle.com
 
-Cheers!
-Martin Dougiamas
+For more information about the reviser
+of the original NEWMODULE template
+visit http://www.welcometochrisworld.com
+-Chris B Stones
+February 28, 2007
+
+
+

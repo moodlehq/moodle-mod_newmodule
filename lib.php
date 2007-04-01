@@ -1,16 +1,16 @@
 <?php  // $Id$
 /**
- * Library of functions and constants for module NEWMODULE
+ * Library of functions and constants for module newmodule
  *
  * @author 
  * @version $Id$
- * @package NEWMODULE
+ * @package newmodule
  **/
 
-/// (replace NEWMODULE with the name of your module and delete this line)
+/// (replace newmodule with the name of your module and delete this line)
 
 
-$NEWMODULE_CONSTANT = 7;     /// for example
+$newmodule_CONSTANT = 7;     /// for example
 
 /**
  * Given an object containing all the necessary data, 
@@ -19,15 +19,19 @@ $NEWMODULE_CONSTANT = 7;     /// for example
  * of the new instance.
  *
  * @param object $instance An object from the form in mod.html
- * @return int The id of the newly inserted NEWMODULE record
+ * @return int The id of the newly inserted newmodule record
  **/
-function NEWMODULE_add_instance($NEWMODULE) {
+function newmodule_add_instance($newmodule) {
     
-    $NEWMODULE->timemodified = time();
+    // temp added for debugging
+    echo "ADD INSTANCE CALLED";
+   // print_object($newmodule);
+    
+    $newmodule->timemodified = time();
 
     # May have to add extra stuff in here #
     
-    return insert_record("NEWMODULE", $NEWMODULE);
+    return insert_record("newmodule", $newmodule);
 }
 
 /**
@@ -38,14 +42,14 @@ function NEWMODULE_add_instance($NEWMODULE) {
  * @param object $instance An object from the form in mod.html
  * @return boolean Success/Fail
  **/
-function NEWMODULE_update_instance($NEWMODULE) {
+function newmodule_update_instance($newmodule) {
 
-    $NEWMODULE->timemodified = time();
-    $NEWMODULE->id = $NEWMODULE->instance;
+    $newmodule->timemodified = time();
+    $newmodule->id = $newmodule->instance;
 
     # May have to add extra stuff in here #
 
-    return update_record("NEWMODULE", $NEWMODULE);
+    return update_record("newmodule", $newmodule);
 }
 
 /**
@@ -56,9 +60,9 @@ function NEWMODULE_update_instance($NEWMODULE) {
  * @param int $id Id of the module instance
  * @return boolean Success/Failure
  **/
-function NEWMODULE_delete_instance($id) {
+function newmodule_delete_instance($id) {
 
-    if (! $NEWMODULE = get_record("NEWMODULE", "id", "$id")) {
+    if (! $newmodule = get_record("newmodule", "id", "$id")) {
         return false;
     }
 
@@ -66,7 +70,7 @@ function NEWMODULE_delete_instance($id) {
 
     # Delete any dependent records here #
 
-    if (! delete_records("NEWMODULE", "id", "$NEWMODULE->id")) {
+    if (! delete_records("newmodule", "id", "$newmodule->id")) {
         $result = false;
     }
 
@@ -83,7 +87,7 @@ function NEWMODULE_delete_instance($id) {
  * @return null
  * @todo Finish documenting this function
  **/
-function NEWMODULE_user_outline($course, $user, $mod, $NEWMODULE) {
+function newmodule_user_outline($course, $user, $mod, $newmodule) {
     return $return;
 }
 
@@ -94,20 +98,20 @@ function NEWMODULE_user_outline($course, $user, $mod, $NEWMODULE) {
  * @return boolean
  * @todo Finish documenting this function
  **/
-function NEWMODULE_user_complete($course, $user, $mod, $NEWMODULE) {
+function newmodule_user_complete($course, $user, $mod, $newmodule) {
     return true;
 }
 
 /**
  * Given a course and a time, this module should find recent activity 
- * that has occurred in NEWMODULE activities and print it out. 
+ * that has occurred in newmodule activities and print it out. 
  * Return true if there was output, or false is there was none. 
  *
  * @uses $CFG
  * @return boolean
  * @todo Finish documenting this function
  **/
-function NEWMODULE_print_recent_activity($course, $isteacher, $timestart) {
+function newmodule_print_recent_activity($course, $isteacher, $timestart) {
     global $CFG;
 
     return false;  //  True if anything was printed, otherwise false 
@@ -122,7 +126,7 @@ function NEWMODULE_print_recent_activity($course, $isteacher, $timestart) {
  * @return boolean
  * @todo Finish documenting this function
  **/
-function NEWMODULE_cron () {
+function newmodule_cron () {
     global $CFG;
 
     return true;
@@ -138,40 +142,40 @@ function NEWMODULE_cron () {
  *
  *    return $return;
  *
- * @param int $NEWMODULEid ID of an instance of this module
+ * @param int $newmoduleid ID of an instance of this module
  * @return mixed Null or object with an array of grades and with the maximum grade
  **/
-function NEWMODULE_grades($NEWMODULEid) {
+function newmodule_grades($newmoduleid) {
    return NULL;
 }
 
 /**
  * Must return an array of user records (all data) who are participants
- * for a given instance of NEWMODULE. Must include every user involved
+ * for a given instance of newmodule. Must include every user involved
  * in the instance, independient of his role (student, teacher, admin...)
  * See other modules as example.
  *
- * @param int $NEWMODULEid ID of an instance of this module
+ * @param int $newmoduleid ID of an instance of this module
  * @return mixed boolean/array of students
  **/
-function NEWMODULE_get_participants($NEWMODULEid) {
+function newmodule_get_participants($newmoduleid) {
     return false;
 }
 
 /**
- * This function returns if a scale is being used by one NEWMODULE
+ * This function returns if a scale is being used by one newmodule
  * it it has support for grading and scales. Commented code should be
  * modified if necessary. See forum, glossary or journal modules
  * as reference.
  *
- * @param int $NEWMODULEid ID of an instance of this module
+ * @param int $newmoduleid ID of an instance of this module
  * @return mixed
  * @todo Finish documenting this function
  **/
-function NEWMODULE_scale_used ($NEWMODULEid,$scaleid) {
+function newmodule_scale_used ($newmoduleid,$scaleid) {
     $return = false;
 
-    //$rec = get_record("NEWMODULE","id","$NEWMODULEid","scale","-$scaleid");
+    //$rec = get_record("newmodule","id","$newmoduleid","scale","-$scaleid");
     //
     //if (!empty($rec)  && !empty($scaleid)) {
     //    $return = true;
@@ -181,8 +185,8 @@ function NEWMODULE_scale_used ($NEWMODULEid,$scaleid) {
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
-/// Any other NEWMODULE functions go here.  Each of them must have a name that 
-/// starts with NEWMODULE_
+/// Any other newmodule functions go here.  Each of them must have a name that 
+/// starts with newmodulenewmodule_
 
 
 ?>
