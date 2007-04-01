@@ -2,7 +2,9 @@
 
 $string['newmodule'] = 'newmodule';
 
-$string['modulenameplural'] = 'newmoduleS';
 $string['modulename'] = 'newmodule';
+$string['modulenameplural'] = 'newmoduleS';
+
+$string['newmodulefieldset'] = 'Custom example fieldset';
 
 ?>
