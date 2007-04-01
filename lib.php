@@ -1,14 +1,20 @@
 <?php  // $Id$
 /**
  * Library of functions and constants for module newmodule
- *
- * @author 
- * @version $Id$
- * @package newmodule
- **/
+ * This file should have two well differenced parts:
+ *   - All the core Moodle functions, neeeded to allow
+ *     the module to work integrated in Moodle.
+ *   - All the newmodule specific functions, needed
+ *     to implement all the module logic. Please, note
+ *     that, if the module become complex and this lib
+ *     grows a lot, it's HIGHLY recommended to move all
+ *     these module specific functions to a new php file,
+ *     called "locallib.php" (see forum, quiz...). This will
+ *     help to save some memory when Moodle is performing
+ *     actions across all modules.
+ */
 
 /// (replace newmodule with the name of your module and delete this line)
-
 
 $newmodule_CONSTANT = 7;     /// for example
 
@@ -27,7 +33,7 @@ function newmodule_add_instance($newmodule) {
     echo "ADD INSTANCE CALLED";
    // print_object($newmodule);
     
-    $newmodule->timemodified = time();
+    $newmodule->timecreated = time();
 
     # May have to add extra stuff in here #
     
@@ -186,7 +192,9 @@ function newmodule_scale_used ($newmoduleid,$scaleid) {
 
 //////////////////////////////////////////////////////////////////////////////////////
 /// Any other newmodule functions go here.  Each of them must have a name that 
-/// starts with newmodulenewmodule_
+/// starts with newmodule_
+/// Remember (see note in first lines) that, if this section grows, it's HIGHLY
+/// recommended to move all funcions below to a new "localib.php" file.
 
 
 ?>
