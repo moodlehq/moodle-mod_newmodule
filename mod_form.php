@@ -9,6 +9,7 @@
  *
  * The form must provide support for, at least these fields:
  *   - name: text element of 64cc max
+ *
  * Also, it's usual to use these fields:
  *   - intro: one htmlarea element to describe the activity
  *            (will be showed in the list of activities of
