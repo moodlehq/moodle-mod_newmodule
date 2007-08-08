@@ -1,6 +1,6 @@
 <?php  //$Id$
 
-// This file keeps track of upgrades to 
+// This file keeps track of upgrades to
 // the newmodule module
 //
 // Sometimes, changes between versions involve
@@ -23,8 +23,8 @@ function xmldb_newmodule_upgrade($oldversion=0) {
 
     $result = true;
 
-/// And upgrade begins here. For each one, you'll need one 
-/// block of code similar to the next one. Please, delete 
+/// And upgrade begins here. For each one, you'll need one
+/// block of code similar to the next one. Please, delete
 /// this comment lines once this file start handling proper
 /// upgrade code.
 
@@ -37,17 +37,17 @@ function xmldb_newmodule_upgrade($oldversion=0) {
 /// for demonstrative purposes and to show how the newmodule
 /// iself has been upgraded.
 
-/// For each upgrade block, the file newmodule/version.php 
+/// For each upgrade block, the file newmodule/version.php
 /// needs to be updated . Such change allows Moodle to know
-/// that this file has to be processed. 
+/// that this file has to be processed.
 
 /// To know more about how to write correct DB upgrade scripts it's
 /// highly recommended to read information available at:
 ///   http://docs.moodle.org/en/Development:XMLDB_Documentation
-/// and to play with the XMLDB Editor (in the admin menu) and its 
+/// and to play with the XMLDB Editor (in the admin menu) and its
 /// PHP generation posibilities.
 
-/// First example, some fields were added to the module on 20070401
+/// First example, some fields were added to the module on 20070400
     if ($result && $oldversion < 2007040100) {
 
     /// Define field course to be added to newmodule
@@ -99,8 +99,8 @@ function xmldb_newmodule_upgrade($oldversion=0) {
         $result = $result && add_index($table, $index);
     }
 
-/// Third example, the next day, 20070402, some inserts were performed, related with the module
-    if ($result && $oldversion < 2007040102) {
+/// Third example, the next day, 20070402 (with the trailing 00), some inserts were performed, related with the module
+    if ($result && $oldversion < 2007040200) {
     /// Add some actions to get them properly displayed in the logs
         $rec = new stdClass;
         $rec->module = 'newmodule';
