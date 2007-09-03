@@ -2,7 +2,7 @@
 /**
  * This page lists all the instances of newmodule in a particular course
  *
- * @author 
+ * @author
  * @version $Id$
  * @package newmodule
  **/
@@ -31,13 +31,11 @@
 
 /// Print the header
 
-    if ($course->category) {
-        $navigation = "<a href=\"../../course/view.php?id=$course->id\">$course->shortname</a> ->";
-    } else {
-        $navigation = '';
-    }
+    $navlinks = array();
+    $navlinks[] = array('name' => $strnewmodules, 'link' => '', 'type' => 'activity');
+    $navigation = build_navigation($navlinks);
 
-    print_header("$course->shortname: $strnewmodules", "$course->fullname", "$navigation $strnewmodules", "", "", true, "", navmenu($course));
+    print_header_simple("$strnewmodules", "", $navigation, "", "", true, "", navmenu($course));
 
 /// Get all the appropriate data
 
