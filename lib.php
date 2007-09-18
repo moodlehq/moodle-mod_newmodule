@@ -190,6 +190,23 @@ function newmodule_scale_used ($newmoduleid,$scaleid) {
     return $return;
 }
 
+/**
+ * Checks if scale is being used by any instance of newmodule.
+ * This function was added in 1.9
+ *
+ * This is used to find out if scale used anywhere
+ * @param $scaleid int
+ * @return boolean True if the scale is used by any newmodule
+ */
+function newmodule_scale_used_anywhere($scaleid) {
+    if ($scaleid and record_exists('newmodule', 'grade', -$scaleid)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
 //////////////////////////////////////////////////////////////////////////////////////
 /// Any other newmodule functions go here.  Each of them must have a name that 
 /// starts with newmodule_
