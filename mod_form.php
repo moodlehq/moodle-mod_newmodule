@@ -1,4 +1,4 @@
-<?php //$Id
+<?php //$Id$
 
 /**
  * This file defines de main newmodule configuration form
