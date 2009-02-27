@@ -213,7 +213,7 @@ function newmodule_scale_used_anywhere($scaleid) {
  * @return boolean true if success, false on error
  */
 function newmodule_install() {
-     return true;
+    return true;
 }
 
 /**
