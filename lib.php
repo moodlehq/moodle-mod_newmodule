@@ -19,30 +19,30 @@
 $newmodule_CONSTANT = 7;     /// for example
 
 /**
- * Given an object containing all the necessary data, 
- * (defined by the form in mod.html) this function 
- * will create a new instance and return the id number 
+ * Given an object containing all the necessary data,
+ * (defined by the form in mod.html) this function
+ * will create a new instance and return the id number
  * of the new instance.
  *
  * @param object $instance An object from the form in mod.html
  * @return int The id of the newly inserted newmodule record
  **/
 function newmodule_add_instance($newmodule) {
-    
+
     // temp added for debugging
     echo "ADD INSTANCE CALLED";
    // print_object($newmodule);
-    
+
     $newmodule->timecreated = time();
 
     # May have to add extra stuff in here #
-    
+
     return insert_record("newmodule", $newmodule);
 }
 
 /**
- * Given an object containing all the necessary data, 
- * (defined by the form in mod.html) this function 
+ * Given an object containing all the necessary data,
+ * (defined by the form in mod.html) this function
  * will update an existing instance with new data.
  *
  * @param object $instance An object from the form in mod.html
@@ -59,9 +59,9 @@ function newmodule_update_instance($newmodule) {
 }
 
 /**
- * Given an ID of an instance of this module, 
- * this function will permanently delete the instance 
- * and any data that depends on it. 
+ * Given an ID of an instance of this module,
+ * this function will permanently delete the instance
+ * and any data that depends on it.
  *
  * @param int $id Id of the module instance
  * @return boolean Success/Failure
@@ -84,7 +84,7 @@ function newmodule_delete_instance($id) {
 }
 
 /**
- * Return a small object with summary information about what a 
+ * Return a small object with summary information about what a
  * user has done with a given particular instance of this module
  * Used for user activity reports.
  * $return->time = the time they did it
@@ -98,7 +98,7 @@ function newmodule_user_outline($course, $user, $mod, $newmodule) {
 }
 
 /**
- * Print a detailed representation of what a user has done with 
+ * Print a detailed representation of what a user has done with
  * a given particular instance of this module, for user activity reports.
  *
  * @return boolean
@@ -109,9 +109,9 @@ function newmodule_user_complete($course, $user, $mod, $newmodule) {
 }
 
 /**
- * Given a course and a time, this module should find recent activity 
- * that has occurred in newmodule activities and print it out. 
- * Return true if there was output, or false is there was none. 
+ * Given a course and a time, this module should find recent activity
+ * that has occurred in newmodule activities and print it out.
+ * Return true if there was output, or false is there was none.
  *
  * @uses $CFG
  * @return boolean
@@ -120,13 +120,13 @@ function newmodule_user_complete($course, $user, $mod, $newmodule) {
 function newmodule_print_recent_activity($course, $isteacher, $timestart) {
     global $CFG;
 
-    return false;  //  True if anything was printed, otherwise false 
+    return false;  //  True if anything was printed, otherwise false
 }
 
 /**
  * Function to be run periodically according to the moodle cron
- * This function searches for things that need to be done, such 
- * as sending out mail, toggling flags etc ... 
+ * This function searches for things that need to be done, such
+ * as sending out mail, toggling flags etc ...
  *
  * @uses $CFG
  * @return boolean
@@ -139,9 +139,9 @@ function newmodule_cron () {
 }
 
 /**
- * Must return an array of grades for a given instance of this module, 
+ * Must return an array of grades for a given instance of this module,
  * indexed by user.  It also returns a maximum allowed grade.
- * 
+ *
  * Example:
  *    $return->grades = array of grades;
  *    $return->maxgrade = maximum allowed grade;
@@ -186,7 +186,7 @@ function newmodule_scale_used ($newmoduleid,$scaleid) {
     //if (!empty($rec)  && !empty($scaleid)) {
     //    $return = true;
     //}
-   
+
     return $return;
 }
 
@@ -213,7 +213,7 @@ function newmodule_scale_used_anywhere($scaleid) {
  * @return boolean true if success, false on error
  */
 function newmodule_install() {
-     return true;
+    return true;
 }
 
 /**
@@ -227,7 +227,7 @@ function newmodule_uninstall() {
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
-/// Any other newmodule functions go here.  Each of them must have a name that 
+/// Any other newmodule functions go here.  Each of them must have a name that
 /// starts with newmodule_
 /// Remember (see note in first lines) that, if this section grows, it's HIGHLY
 /// recommended to move all funcions below to a new "localib.php" file.
