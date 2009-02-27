@@ -1,7 +1,8 @@
 This README file is based off the original README written
-by Martin Dougiamas 
-However it as well as some of the code has been re-written so that the 
-module will work with Moodle 1.7 and beyond (with luck)
+by Martin Dougiamas
+
+However it as well as some of the code has been re-written so that the
+module will work with Moodle 1.9 and beyond (with luck)
 
 
 The following steps should get you up and running with
@@ -10,13 +11,13 @@ this module template code.
 1. Unzip the archive and read this file
 
 2. The module folder MUST be lower case before Moodle will recognize
-   it. 
+   it.
 
-3. Edit all the files in this directory and change all the 
+3. Edit all the files in this directory and change all the
    instances of newmodule to your new module name (eg widget).
 
 4. Place the newmodule folder into the /mod folder of the moodle
-   directory. 
+   directory.
 
 5. As Admin goto Notifications and you should find the module's
    databases successfully created
@@ -30,7 +31,7 @@ this module template code.
 
 
 For help with developing code for moodle, visit
-the "Activity modules" developers forum in the online 
+the "Activity modules" developers forum in the online
 course called "Using Moodle" at http:/* moodle.org */
 
 Or email Martin Dougiamas at:  martin@moodle.com
@@ -40,6 +41,3 @@ of the original NEWMODULE template
 visit http://www.welcometochrisworld.com
 -Chris B Stones
 February 28, 2007
-
-
-
