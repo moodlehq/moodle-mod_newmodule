@@ -4,7 +4,7 @@
  * Code fragment to define the version of newmodule
  * This fragment is called by moodle_needs_upgrading() and /admin/index.php
  *
- * @author 
+ * @author
  * @version $Id$
  * @package newmodule
  **/
