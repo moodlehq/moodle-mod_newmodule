@@ -4,10 +4,10 @@
  * Code fragment to define the version of newmodule
  * This fragment is called by moodle_needs_upgrading() and /admin/index.php
  *
- * @author
+ * @author  Your Name <your@email.address>
  * @version $Id$
- * @package newmodule
- **/
+ * @package mod/newmodule
+ */
 
 $module->version  = 2007040200;  // The current module version (Date: YYYYMMDDXX)
 $module->cron     = 0;           // Period for cron to check this module (secs)
