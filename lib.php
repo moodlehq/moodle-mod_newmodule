@@ -30,14 +30,14 @@ $newmodule_CONSTANT = 7;     /// for example
 function newmodule_add_instance($newmodule) {
 
     // temp added for debugging
-    echo "ADD INSTANCE CALLED";
+    echo 'ADD INSTANCE CALLED';
    // print_object($newmodule);
 
     $newmodule->timecreated = time();
 
     # May have to add extra stuff in here #
 
-    return insert_record("newmodule", $newmodule);
+    return insert_record('newmodule', $newmodule);
 }
 
 /**
@@ -55,7 +55,7 @@ function newmodule_update_instance($newmodule) {
 
     # May have to add extra stuff in here #
 
-    return update_record("newmodule", $newmodule);
+    return update_record('newmodule', $newmodule);
 }
 
 /**
@@ -68,7 +68,7 @@ function newmodule_update_instance($newmodule) {
  **/
 function newmodule_delete_instance($id) {
 
-    if (! $newmodule = get_record("newmodule", "id", "$id")) {
+    if (! $newmodule = get_record('newmodule', 'id', $id)) {
         return false;
     }
 
@@ -76,7 +76,7 @@ function newmodule_delete_instance($id) {
 
     # Delete any dependent records here #
 
-    if (! delete_records("newmodule", "id", "$newmodule->id")) {
+    if (! delete_records('newmodule', 'id', $newmodule->id)) {
         $result = false;
     }
 
