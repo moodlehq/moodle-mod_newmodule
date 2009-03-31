@@ -1,7 +1,7 @@
 <?php //$Id$
 
 /**
- * This file defines de main newmodule configuration form
+ * This file defines the main newmodule configuration form
  * It uses the standard core Moodle (>1.8) formslib. For
  * more info about them, please visit:
  *
@@ -24,29 +24,30 @@
  *             function for more info
  */
 
-require_once ('moodleform_mod.php');
+require_once($CFG->dirroot.'/course/moodleform_mod.php');
 
 class mod_newmodule_mod_form extends moodleform_mod {
 
     function definition() {
 
         global $COURSE;
-        $mform    =& $this->_form;
+        $mform =& $this->_form;
 
 //-------------------------------------------------------------------------------
     /// Adding the "general" fieldset, where all the common settings are showed
         $mform->addElement('header', 'general', get_string('general', 'form'));
+
     /// Adding the standard "name" field
         $mform->addElement('text', 'name', get_string('newmodulename', 'newmodule'), array('size'=>'64'));
         $mform->setType('name', PARAM_TEXT);
         $mform->addRule('name', null, 'required', null, 'client');
-    /// Adding the optional "intro" and "introformat" pair of fields
+        $mform->addRule('name', get_string('maximumchars', '', 255), 'maxlength', 255, 'client');
+
+    /// Adding the required "intro" field to hold the description of the instance
         $mform->addElement('htmleditor', 'intro', get_string('newmoduleintro', 'newmodule'));
         $mform->setType('intro', PARAM_RAW);
         $mform->addRule('intro', get_string('required'), 'required', null, 'client');
         $mform->setHelpButton('intro', array('writing', 'richtext'), false, 'editorhelpbutton');
-
-        $mform->addElement('format', 'introformat', get_string('format'));
 
 //-------------------------------------------------------------------------------
     /// Adding the rest of newmodule settings, spreeading all them into this fieldset
