@@ -1,4 +1,5 @@
 <?php  // $Id$
+
 /**
  * Library of functions and constants for module newmodule
  * This file should have two well differenced parts:
@@ -16,47 +17,46 @@
 
 /// (replace newmodule with the name of your module and delete this line)
 
-$newmodule_CONSTANT = 7;     /// for example
+$newmodule_EXAMPLE_CONSTANT = 42;     /// for example
+
 
 /**
  * Given an object containing all the necessary data,
- * (defined by the form in mod.html) this function
+ * (defined by the form in mod_form.php) this function
  * will create a new instance and return the id number
  * of the new instance.
  *
- * @param object $instance An object from the form in mod.html
+ * @param object $newmodule An object from the form in mod_form.php
  * @return int The id of the newly inserted newmodule record
- **/
+ */
 function newmodule_add_instance($newmodule) {
-
-    // temp added for debugging
-    echo 'ADD INSTANCE CALLED';
-   // print_object($newmodule);
 
     $newmodule->timecreated = time();
 
-    # May have to add extra stuff in here #
+    # You may have to add extra stuff in here #
 
     return insert_record('newmodule', $newmodule);
 }
 
+
 /**
  * Given an object containing all the necessary data,
- * (defined by the form in mod.html) this function
+ * (defined by the form in mod_form.php) this function
  * will update an existing instance with new data.
  *
- * @param object $instance An object from the form in mod.html
+ * @param object $newmodule An object from the form in mod_form.php
  * @return boolean Success/Fail
- **/
+ */
 function newmodule_update_instance($newmodule) {
 
     $newmodule->timemodified = time();
     $newmodule->id = $newmodule->instance;
 
-    # May have to add extra stuff in here #
+    # You may have to add extra stuff in here #
 
     return update_record('newmodule', $newmodule);
 }
+
 
 /**
  * Given an ID of an instance of this module,
@@ -65,7 +65,7 @@ function newmodule_update_instance($newmodule) {
  *
  * @param int $id Id of the module instance
  * @return boolean Success/Failure
- **/
+ */
 function newmodule_delete_instance($id) {
 
     if (! $newmodule = get_record('newmodule', 'id', $id)) {
@@ -83,6 +83,7 @@ function newmodule_delete_instance($id) {
     return $result;
 }
 
+
 /**
  * Return a small object with summary information about what a
  * user has done with a given particular instance of this module
@@ -92,10 +93,11 @@ function newmodule_delete_instance($id) {
  *
  * @return null
  * @todo Finish documenting this function
- **/
+ */
 function newmodule_user_outline($course, $user, $mod, $newmodule) {
     return $return;
 }
+
 
 /**
  * Print a detailed representation of what a user has done with
@@ -103,40 +105,37 @@ function newmodule_user_outline($course, $user, $mod, $newmodule) {
  *
  * @return boolean
  * @todo Finish documenting this function
- **/
+ */
 function newmodule_user_complete($course, $user, $mod, $newmodule) {
     return true;
 }
+
 
 /**
  * Given a course and a time, this module should find recent activity
  * that has occurred in newmodule activities and print it out.
  * Return true if there was output, or false is there was none.
  *
- * @uses $CFG
  * @return boolean
  * @todo Finish documenting this function
- **/
+ */
 function newmodule_print_recent_activity($course, $isteacher, $timestart) {
-    global $CFG;
-
     return false;  //  True if anything was printed, otherwise false
 }
+
 
 /**
  * Function to be run periodically according to the moodle cron
  * This function searches for things that need to be done, such
  * as sending out mail, toggling flags etc ...
  *
- * @uses $CFG
  * @return boolean
  * @todo Finish documenting this function
  **/
 function newmodule_cron () {
-    global $CFG;
-
     return true;
 }
+
 
 /**
  * Must return an array of grades for a given instance of this module,
@@ -150,10 +149,11 @@ function newmodule_cron () {
  *
  * @param int $newmoduleid ID of an instance of this module
  * @return mixed Null or object with an array of grades and with the maximum grade
- **/
+ */
 function newmodule_grades($newmoduleid) {
    return NULL;
 }
+
 
 /**
  * Must return an array of user records (all data) who are participants
@@ -163,32 +163,34 @@ function newmodule_grades($newmoduleid) {
  *
  * @param int $newmoduleid ID of an instance of this module
  * @return mixed boolean/array of students
- **/
+ */
 function newmodule_get_participants($newmoduleid) {
     return false;
 }
 
+
 /**
  * This function returns if a scale is being used by one newmodule
- * it it has support for grading and scales. Commented code should be
+ * if it has support for grading and scales. Commented code should be
  * modified if necessary. See forum, glossary or journal modules
  * as reference.
  *
  * @param int $newmoduleid ID of an instance of this module
  * @return mixed
  * @todo Finish documenting this function
- **/
-function newmodule_scale_used ($newmoduleid,$scaleid) {
+ */
+function newmodule_scale_used($newmoduleid, $scaleid) {
     $return = false;
 
     //$rec = get_record("newmodule","id","$newmoduleid","scale","-$scaleid");
     //
-    //if (!empty($rec)  && !empty($scaleid)) {
+    //if (!empty($rec) && !empty($scaleid)) {
     //    $return = true;
     //}
 
     return $return;
 }
+
 
 /**
  * Checks if scale is being used by any instance of newmodule.
@@ -206,6 +208,7 @@ function newmodule_scale_used_anywhere($scaleid) {
     }
 }
 
+
 /**
  * Execute post-install custom actions for the module
  * This function was added in 1.9
@@ -216,6 +219,7 @@ function newmodule_install() {
     return true;
 }
 
+
 /**
  * Execute post-uninstall custom actions for the module
  * This function was added in 1.9
@@ -225,6 +229,7 @@ function newmodule_install() {
 function newmodule_uninstall() {
     return true;
 }
+
 
 //////////////////////////////////////////////////////////////////////////////////////
 /// Any other newmodule functions go here.  Each of them must have a name that
