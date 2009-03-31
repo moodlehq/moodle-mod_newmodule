@@ -17,27 +17,27 @@ $id = optional_param('id', 0, PARAM_INT); // course_module ID, or
 $a  = optional_param('a', 0, PARAM_INT);  // newmodule instance ID
 
 if ($id) {
-    if (! $cm = get_coursemodule_from_id("newmodule", $id)) {
-        error("Course Module ID was incorrect");
+    if (! $cm = get_coursemodule_from_id('newmodule', $id)) {
+        error('Course Module ID was incorrect');
     }
 
-    if (! $course = get_record("course", "id", $cm->course)) {
-        error("Course is misconfigured");
+    if (! $course = get_record('course', 'id', $cm->course)) {
+        error('Course is misconfigured');
     }
 
-    if (! $newmodule = get_record("newmodule", "id", $cm->instance)) {
-        error("Course module is incorrect");
+    if (! $newmodule = get_record('newmodule', 'id', $cm->instance)) {
+        error('Course module is incorrect');
     }
 
 } else if ($a) {
-    if (! $newmodule = get_record("newmodule", "id", $a)) {
-        error("Course module is incorrect");
+    if (! $newmodule = get_record('newmodule', 'id', $a)) {
+        error('Course module is incorrect');
     }
-    if (! $course = get_record("course", "id", $newmodule->course)) {
-        error("Course is misconfigured");
+    if (! $course = get_record('course', 'id', $newmodule->course)) {
+        error('Course is misconfigured');
     }
-    if (! $cm = get_coursemodule_from_instance("newmodule", $newmodule->id, $course->id)) {
-        error("Course Module ID was incorrect");
+    if (! $cm = get_coursemodule_from_instance('newmodule', $newmodule->id, $course->id)) {
+        error('Course Module ID was incorrect');
     }
 
 } else {
@@ -49,8 +49,8 @@ require_login($course, true, $cm);
 add_to_log($course->id, "newmodule", "view", "view.php?id=$cm->id", "$newmodule->id");
 
 /// Print the page header
-$strnewmodules = get_string("modulenameplural", "newmodule");
-$strnewmodule  = get_string("modulename", "newmodule");
+$strnewmodules = get_string('modulenameplural', 'newmodule');
+$strnewmodule  = get_string('modulename', "newmodule');
 
 $navlinks = array();
 $navlinks[] = array('name' => $strnewmodules, 'link' => "index.php?id=$course->id", 'type' => 'activity');
@@ -58,12 +58,12 @@ $navlinks[] = array('name' => format_string($newmodule->name), 'link' => '', 'ty
 
 $navigation = build_navigation($navlinks);
 
-print_header_simple(format_string($newmodule->name), "", $navigation, "", "", true,
+print_header_simple(format_string($newmodule->name), '', $navigation, '', '', true,
               update_module_button($cm->id, $course->id, $strnewmodule), navmenu($course, $cm));
 
 /// Print the main part of the page
 
-echo "YOUR CODE GOES HERE";
+echo 'YOUR CODE GOES HERE';
 
 
 /// Finish the page
