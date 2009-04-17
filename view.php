@@ -50,7 +50,7 @@ add_to_log($course->id, "newmodule", "view", "view.php?id=$cm->id", "$newmodule-
 
 /// Print the page header
 $strnewmodules = get_string('modulenameplural', 'newmodule');
-$strnewmodule  = get_string('modulename', "newmodule');
+$strnewmodule  = get_string('modulename', 'newmodule');
 
 $navlinks = array();
 $navlinks[] = array('name' => $strnewmodules, 'link' => "index.php?id=$course->id", 'type' => 'activity');
