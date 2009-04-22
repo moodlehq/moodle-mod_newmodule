@@ -138,24 +138,6 @@ function newmodule_cron () {
 
 
 /**
- * Must return an array of grades for a given instance of this module,
- * indexed by user.  It also returns a maximum allowed grade.
- *
- * Example:
- *    $return->grades = array of grades;
- *    $return->maxgrade = maximum allowed grade;
- *
- *    return $return;
- *
- * @param int $newmoduleid ID of an instance of this module
- * @return mixed Null or object with an array of grades and with the maximum grade
- */
-function newmodule_grades($newmoduleid) {
-   return NULL;
-}
-
-
-/**
  * Must return an array of user records (all data) who are participants
  * for a given instance of newmodule. Must include every user involved
  * in the instance, independient of his role (student, teacher, admin...)
