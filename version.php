@@ -9,7 +9,8 @@
  * @package newmodule
  **/
 
-$module->version  = 2007040200;  // The current module version (Date: YYYYMMDDXX)
+$module->version  = 0;           // If version == 0 then module will not be installed
+//$module->version  = 2007040200;  // The current module version (Date: YYYYMMDDXX)
 $module->cron     = 0;           // Period for cron to check this module (secs)
 
 ?>
