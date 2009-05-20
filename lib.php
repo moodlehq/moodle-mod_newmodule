@@ -1,18 +1,33 @@
-<?php  // $Id$
-
+<?php // $Id$
+ 
+// This file is part of Moodle - http://moodle.org/  
+// 
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ 
 /**
- * Library of functions and constants for module newmodule
- * This file should have two well differenced parts:
- *   - All the core Moodle functions, neeeded to allow
- *     the module to work integrated in Moodle.
- *   - All the newmodule specific functions, needed
- *     to implement all the module logic. Please, note
- *     that, if the module become complex and this lib
- *     grows a lot, it's HIGHLY recommended to move all
- *     these module specific functions to a new php file,
- *     called "locallib.php" (see forum, quiz...). This will
- *     help to save some memory when Moodle is performing
- *     actions across all modules.
+ * Library of interface functions and constants for module newmodule
+ *
+ * All the core Moodle functions, neeeded to allow the module to work 
+ * integrated in Moodle should be placed here.
+ * All the newmodule specific functions, needed to implement all the module 
+ * logic, should go to locallib.php. This will help to save some memory when 
+ * Moodle is performing actions across all modules.
+ *
+ * @package   mod-newmodule
+ * @copyright 2009 Your Name
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /// (replace newmodule with the name of your module and delete this line)
@@ -211,13 +226,3 @@ function newmodule_install() {
 function newmodule_uninstall() {
     return true;
 }
-
-
-//////////////////////////////////////////////////////////////////////////////////////
-/// Any other newmodule functions go here.  Each of them must have a name that
-/// starts with newmodule_
-/// Remember (see note in first lines) that, if this section grows, it's HIGHLY
-/// recommended to move all funcions below to a new "localib.php" file.
-
-
-?>
