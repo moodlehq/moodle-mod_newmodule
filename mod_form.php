@@ -60,6 +60,8 @@ class mod_newmodule_mod_form extends moodleform_mod {
 
         $mform->addElement('header', 'newmodulefieldset', get_string('newmodulefieldset', 'newmodule'));
         $mform->addElement('static', 'label2', 'newmodulesetting2', 'Your newmodule fields go here. Replace me!');
+        // Here is how you can add help (?) icons to your field labels
+        $mform->setHelpButton('label2', array('helpfilename', 'newmodulesetting2', 'newmodule'));
 
 //-------------------------------------------------------------------------------
         // add standard elements, common to all modules
