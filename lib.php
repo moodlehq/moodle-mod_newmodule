@@ -111,7 +111,7 @@ function newmodule_delete_instance($id) {
  */
 function newmodule_user_outline($course, $user, $mod, $newmodule) {
     $return = new stdClass;
-    $return->time = 0
+    $return->time = 0;
     $return->info = '';
     return $return;
 }
