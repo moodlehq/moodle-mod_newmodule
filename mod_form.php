@@ -42,15 +42,16 @@ class mod_newmodule_mod_form extends moodleform_mod {
 
     /// Adding the standard "name" field
         $mform->addElement('text', 'name', get_string('newmodulename', 'newmodule'), array('size'=>'64'));
-        $mform->setType('name', PARAM_TEXT);
+        if (!empty($CFG->formatstringstriptags)) {
+            $mform->setType('name', PARAM_TEXT);
+        } else {
+            $mform->setType('name', PARAM_CLEAN);
+        }
         $mform->addRule('name', null, 'required', null, 'client');
         $mform->addRule('name', get_string('maximumchars', '', 255), 'maxlength', 255, 'client');
 
-    /// Adding the required "intro" field to hold the description of the instance
-        $mform->addElement('htmleditor', 'intro', get_string('newmoduleintro', 'newmodule'));
-        $mform->setType('intro', PARAM_RAW);
-        $mform->addRule('intro', get_string('required'), 'required', null, 'client');
-        $mform->setHelpButton('intro', array('writing', 'richtext'), false, 'editorhelpbutton');
+    /// Adding the standard "intro" and "introformat" fields
+        $this->add_intro_editor(false, get_string('introduction', 'newmodule'));
 
 //-------------------------------------------------------------------------------
     /// Adding the rest of newmodule settings, spreeading all them into this fieldset
