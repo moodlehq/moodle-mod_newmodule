@@ -40,19 +40,19 @@ if ($id) {
         error('Course Module ID was incorrect');
     }
 
-    if (! $course = $DB->get_record('course', 'id', $cm->course)) {
+    if (! $course = $DB->get_record('course', array('id' => $cm->course))) {
         error('Course is misconfigured');
     }
 
-    if (! $newmodule = $DB->get_record('newmodule', 'id', $cm->instance)) {
+    if (! $newmodule = $DB->get_record('newmodule', array('id' => $cm->instance))) {
         error('Course module is incorrect');
     }
 
 } else if ($a) {
-    if (! $newmodule = $DB->get_record('newmodule', 'id', $a)) {
+    if (! $newmodule = $DB->get_record('newmodule', array('id' => $a))) {
         error('Course module is incorrect');
     }
-    if (! $course = $DB->get_record('course', 'id', $newmodule->course)) {
+    if (! $course = $DB->get_record('course', array('id' => $newmodule->course))) {
         error('Course is misconfigured');
     }
     if (! $cm = get_coursemodule_from_instance('newmodule', $newmodule->id, $course->id)) {

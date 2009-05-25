@@ -86,7 +86,7 @@ function newmodule_update_instance($newmodule) {
 function newmodule_delete_instance($id) {
     global $DB;
 
-    if (! $newmodule = $DB->get_record('newmodule', 'id', $id)) {
+    if (! $newmodule = $DB->get_record('newmodule', array('id' => $id))) {
         return false;
     }
 
@@ -187,7 +187,7 @@ function newmodule_scale_used($newmoduleid, $scaleid) {
 
     $return = false;
 
-    //$rec = $DB->get_record("newmodule","id","$newmoduleid","scale","-$scaleid");
+    //$rec = $DB->get_record("newmodule", array("id" => "$newmoduleid", "scale" => "-$scaleid"));
     //
     //if (!empty($rec) && !empty($scaleid)) {
     //    $return = true;

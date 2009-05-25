@@ -34,7 +34,7 @@ require_once(dirname(__FILE__).'/lib.php');
 
 $id = required_param('id', PARAM_INT);   // course
 
-if (! $course = $DB->get_record('course', 'id', $id)) {
+if (! $course = $DB->get_record('course', array('id' => $id))) {
     error('Course ID is incorrect');
 }
 
