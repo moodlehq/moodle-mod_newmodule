@@ -45,12 +45,13 @@ $newmodule_EXAMPLE_CONSTANT = 42;     /// for example
  * @return int The id of the newly inserted newmodule record
  */
 function newmodule_add_instance($newmodule) {
+    global $DB;
 
     $newmodule->timecreated = time();
 
     # You may have to add extra stuff in here #
 
-    return insert_record('newmodule', $newmodule);
+    return $DB->insert_record('newmodule', $newmodule);
 }
 
 
@@ -63,13 +64,14 @@ function newmodule_add_instance($newmodule) {
  * @return boolean Success/Fail
  */
 function newmodule_update_instance($newmodule) {
+    global $DB;
 
     $newmodule->timemodified = time();
     $newmodule->id = $newmodule->instance;
 
     # You may have to add extra stuff in here #
 
-    return update_record('newmodule', $newmodule);
+    return $DB->update_record('newmodule', $newmodule);
 }
 
 
@@ -82,8 +84,9 @@ function newmodule_update_instance($newmodule) {
  * @return boolean Success/Failure
  */
 function newmodule_delete_instance($id) {
+    global $DB;
 
-    if (! $newmodule = get_record('newmodule', 'id', $id)) {
+    if (! $newmodule = $DB->get_record('newmodule', 'id', $id)) {
         return false;
     }
 
@@ -91,7 +94,7 @@ function newmodule_delete_instance($id) {
 
     # Delete any dependent records here #
 
-    if (! delete_records('newmodule', 'id', $newmodule->id)) {
+    if (! $DB->delete_records('newmodule', 'id', $newmodule->id)) {
         $result = false;
     }
 
@@ -180,9 +183,11 @@ function newmodule_get_participants($newmoduleid) {
  * @todo Finish documenting this function
  */
 function newmodule_scale_used($newmoduleid, $scaleid) {
+    global $DB;
+
     $return = false;
 
-    //$rec = get_record("newmodule","id","$newmoduleid","scale","-$scaleid");
+    //$rec = $DB->get_record("newmodule","id","$newmoduleid","scale","-$scaleid");
     //
     //if (!empty($rec) && !empty($scaleid)) {
     //    $return = true;
@@ -201,7 +206,9 @@ function newmodule_scale_used($newmoduleid, $scaleid) {
  * @return boolean True if the scale is used by any newmodule
  */
 function newmodule_scale_used_anywhere($scaleid) {
-    if ($scaleid and record_exists('newmodule', 'grade', -$scaleid)) {
+    global $DB;
+
+    if ($scaleid and $DB->record_exists('newmodule', 'grade', -$scaleid)) {
         return true;
     } else {
         return false;
