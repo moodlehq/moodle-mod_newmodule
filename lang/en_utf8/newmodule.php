@@ -27,12 +27,11 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-
-$string['newmodule'] = 'newmodule';
+defined('MOODLE_INTERNAL') || die();
 
 $string['modulename'] = 'newmodule';
 $string['modulenameplural'] = 'newmoduleS';
-
 $string['newmodulefieldset'] = 'Custom example fieldset';
 $string['newmoduleintro'] = 'newmodule Intro';
 $string['newmodulename'] = 'newmodule Name';
+$string['newmodule'] = 'newmodule';

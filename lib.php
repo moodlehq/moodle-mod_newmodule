@@ -30,6 +30,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die();
+
 /// (replace newmodule with the name of your module and delete this line)
 
 $newmodule_EXAMPLE_CONSTANT = 42;     /// for example
