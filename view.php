@@ -68,17 +68,28 @@ require_login($course, true, $cm);
 add_to_log($course->id, "newmodule", "view", "view.php?id=$cm->id", "$newmodule->id");
 
 /// Print the page header
-$strnewmodules = get_string('modulenameplural', 'newmodule');
-$strnewmodule  = get_string('modulename', 'newmodule');
 
-$navlinks = array();
-$navlinks[] = array('name' => $strnewmodules, 'link' => "index.php?id=$course->id", 'type' => 'activity');
-$navlinks[] = array('name' => format_string($newmodule->name), 'link' => '', 'type' => 'activityinstance');
+$PAGE->set_url('mod/newmodule/view.php', array('id' => $cm->id));
+$PAGE->set_title($newmodule->name);
+$PAGE->set_heading($course->shortname);
+$PAGE->set_button(update_module_button($cm->id, $course->id, get_string('modulename', 'newmodule')));
 
+// other things you may want to set - remove if not needed
+//$PAGE->set_cacheable(false);
+//$PAGE->set_focuscontrol('some-html-id');
+
+// todo navigation will be changed yet for Moodle 2.0
+$navlinks   = array();
+$navlinks[] = array('name' => get_string('modulenameplural', 'newmodule'),
+                    'link' => "index.php?id=$course->id",
+                    'type' => 'activity');
+$navlinks[] = array('name' => format_string($newmodule->name),
+                    'link' => '',
+                    'type' => 'activityinstance');
 $navigation = build_navigation($navlinks);
+$menu       = navmenu($course, $cm);
 
-print_header_simple(format_string($newmodule->name), '', $navigation, '', '', true,
-              update_module_button($cm->id, $course->id, $strnewmodule), navmenu($course, $cm));
+echo $OUTPUT->header($navigation, $menu);
 
 /// Print the main part of the page
 
@@ -86,4 +97,4 @@ echo 'YOUR CODE GOES HERE';
 
 
 /// Finish the page
-print_footer($course);
+echo $OUTPUT->footer();

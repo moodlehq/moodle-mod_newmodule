@@ -42,26 +42,28 @@ require_course_login($course);
 
 add_to_log($course->id, 'newmodule', 'view all', "index.php?id=$course->id", '');
 
-
-/// Get all required stringsnewmodule
-
-$strnewmodules = get_string('modulenameplural', 'newmodule');
-$strnewmodule  = get_string('modulename', 'newmodule');
-
-
 /// Print the header
 
+$PAGE->set_url('mod/newmodule/view.php', array('id' => $id));
+$PAGE->set_title($course->fullname);
+$PAGE->set_heading($course->shortname);
+
+// todo navigation will be changed yet for Moodle 2.0
 $navlinks = array();
-$navlinks[] = array('name' => $strnewmodules, 'link' => '', 'type' => 'activity');
+$navlinks[] = array('name' => get_string('modulenameplural', 'newmodule'),
+                    'link' => '',
+                    'type' => 'activity');
 $navigation = build_navigation($navlinks);
 
-print_header_simple($strnewmodules, '', $navigation, '', '', true, '', navmenu($course));
+echo $OUTPUT->header($navigation);
 
 /// Get all the appropriate data
 
 if (! $newmodules = get_all_instances_in_course('newmodule', $course)) {
-    notice('There are no newmodules', "../../course/view.php?id=$course->id");
-    die;
+    echo $OUTPUT->heading(get_string('nonewmodules', 'newmodule'), 2);
+    echo $OUTPUT->continue_button("view.php?id=$course->id");
+    echo $OUTPUT->footer();
+    die();
 }
 
 /// Print the list of instances (your module will probably extend this)
@@ -98,9 +100,9 @@ foreach ($newmodules as $newmodule) {
     }
 }
 
-print_heading($strnewmodules);
+echo $OUTPUT->heading(get_string('modulenameplural', 'newmodule'), 2);
 print_table($table);
 
 /// Finish the page
 
-print_footer($course);
+echo $OUTPUT->footer();
