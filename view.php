@@ -1,7 +1,7 @@
 <?php
- 
-// This file is part of Moodle - http://moodle.org/  
-// 
+
+// This file is part of Moodle - http://moodle.org/
+//
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
@@ -11,11 +11,11 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
- 
- 
+
+
 /**
  * Prints a particular instance of newmodule
  *
@@ -78,7 +78,7 @@ $PAGE->set_button(update_module_button($cm->id, $course->id, get_string('modulen
 //$PAGE->set_cacheable(false);
 //$PAGE->set_focuscontrol('some-html-id');
 
-// todo navigation will be changed yet for Moodle 2.0
+// TODO navigation will be changed yet for Moodle 2.0
 $navlinks   = array();
 $navlinks[] = array('name' => get_string('modulenameplural', 'newmodule'),
                     'link' => "index.php?id=$course->id",
