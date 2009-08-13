@@ -30,9 +30,9 @@
 function xmldb_newmodule_install() {
     global $DB;
 
-    // Install logging support
-    //update_log_display_entry('newmodule', 'add', 'newmodule', 'name');
-    //update_log_display_entry('newmodule', 'update', 'newmodule', 'name');
-    //update_log_display_entry('newmodule', 'view', 'newmodule', 'name');
-    //update_log_display_entry('newmodule', 'view all', 'newmodule', 'name');
+    // Install default common logging actions
+    update_log_display_entry('newmodule', 'add', 'newmodule', 'name');
+    update_log_display_entry('newmodule', 'update', 'newmodule', 'name');
+    update_log_display_entry('newmodule', 'view', 'newmodule', 'name');
+    update_log_display_entry('newmodule', 'view all', 'newmodule', 'name');
 }
