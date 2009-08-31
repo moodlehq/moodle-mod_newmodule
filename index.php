@@ -87,10 +87,10 @@ if ($course->format == 'weeks') {
 foreach ($newmodules as $newmodule) {
     if (!$newmodule->visible) {
         //Show dimmed if the mod is hidden
-        $link = "<a class=\"dimmed\" href=\"view.php?id=$newmodule->coursemodule\">$newmodule->name</a>";
+        $link = '<a class="dimmed" href="view.php?id='.$newmodule->coursemodule.'">'.format_string($newmodule->name).'</a>';
     } else {
         //Show normal if the mod is visible
-        $link = "<a href=\"view.php?id=$newmodule->coursemodule\">$newmodule->name</a>";
+        $link = '<a href="view.php?id='.$newmodule->coursemodule.'">'.format_string($newmodule->name).'</a>';
     }
 
     if ($course->format == 'weeks' or $course->format == 'topics') {
