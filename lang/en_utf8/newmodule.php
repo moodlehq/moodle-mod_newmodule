@@ -30,8 +30,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['modulename'] = 'newmodule';
-$string['modulenameplural'] = 'newmoduleS';
+$string['modulenameplural'] = 'newmodules';
 $string['newmodulefieldset'] = 'Custom example fieldset';
-$string['newmoduleintro'] = 'newmodule Intro';
-$string['newmodulename'] = 'newmodule Name';
+$string['newmodulename'] = 'newmodule name';
 $string['newmodule'] = 'newmodule';

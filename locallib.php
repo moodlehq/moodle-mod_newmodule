@@ -17,10 +17,10 @@
 
 
 /**
- * Defines the version of newmodule
+ * Internal library of functions for module newmodule
  *
- * This code fragment is called by moodle_needs_upgrading() and
- * /admin/index.php
+ * All the newmodule specific functions, needed to implement the module
+ * logic, should go here. Never include this file from your lib.php!
  *
  * @package   mod-newmodule
  * @copyright 2009 Your Name
@@ -29,7 +29,12 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$module->version  = 0;           // If version == 0 then module will not be installed
-//$module->version  = 2009052000;  // The current module version (Date: YYYYMMDDXX)
-$module->requires = 2009090400;  // Requires this Moodle version
-$module->cron     = 0;           // Period for cron to check this module (secs)
+/**
+ * Does something really useful with the passed things
+ *
+ * @param array $things
+ * @return object
+ */
+//function newmodule_do_something_useful(array $things) {
+//    return new stdClass();
+//}

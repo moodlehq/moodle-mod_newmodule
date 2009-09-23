@@ -32,10 +32,16 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-/// (replace newmodule with the name of your module and delete this line)
+/** example constant */
+//define('NEWMODULE_ULTIMATE_ANSWER', 42);
 
-$newmodule_EXAMPLE_CONSTANT = 42;     /// for example
-
+/**
+ * If you for some reason need to use global variables instead of constants, do not forget to make them
+ * global as this file can be included inside a function scope. However, using the global variables
+ * at the module level is not a recommended.
+ */
+//global $NEWMODULE_GLOBAL_VARIABLE;
+//$NEWMODULE_QUESTION_OF = array('Life', 'Universe', 'Everything');
 
 /**
  * Given an object containing all the necessary data,
@@ -56,7 +62,6 @@ function newmodule_add_instance($newmodule) {
     return $DB->insert_record('newmodule', $newmodule);
 }
 
-
 /**
  * Given an object containing all the necessary data,
  * (defined by the form in mod_form.php) this function
@@ -75,7 +80,6 @@ function newmodule_update_instance($newmodule) {
 
     return $DB->update_record('newmodule', $newmodule);
 }
-
 
 /**
  * Given an ID of an instance of this module,
@@ -103,7 +107,6 @@ function newmodule_delete_instance($id) {
     return $result;
 }
 
-
 /**
  * Return a small object with summary information about what a
  * user has done with a given particular instance of this module
@@ -121,7 +124,6 @@ function newmodule_user_outline($course, $user, $mod, $newmodule) {
     return $return;
 }
 
-
 /**
  * Print a detailed representation of what a user has done with
  * a given particular instance of this module, for user activity reports.
@@ -132,7 +134,6 @@ function newmodule_user_outline($course, $user, $mod, $newmodule) {
 function newmodule_user_complete($course, $user, $mod, $newmodule) {
     return true;
 }
-
 
 /**
  * Given a course and a time, this module should find recent activity
@@ -146,7 +147,6 @@ function newmodule_print_recent_activity($course, $isteacher, $timestart) {
     return false;  //  True if anything was printed, otherwise false
 }
 
-
 /**
  * Function to be run periodically according to the moodle cron
  * This function searches for things that need to be done, such
@@ -158,7 +158,6 @@ function newmodule_print_recent_activity($course, $isteacher, $timestart) {
 function newmodule_cron () {
     return true;
 }
-
 
 /**
  * Must return an array of user records (all data) who are participants
@@ -172,7 +171,6 @@ function newmodule_cron () {
 function newmodule_get_participants($newmoduleid) {
     return false;
 }
-
 
 /**
  * This function returns if a scale is being used by one newmodule
@@ -198,7 +196,6 @@ function newmodule_scale_used($newmoduleid, $scaleid) {
     return $return;
 }
 
-
 /**
  * Checks if scale is being used by any instance of newmodule.
  * This function was added in 1.9
@@ -217,7 +214,6 @@ function newmodule_scale_used_anywhere($scaleid) {
     }
 }
 
-
 /**
  * Execute post-install custom actions for the module
  * This function was added in 1.9
@@ -227,7 +223,6 @@ function newmodule_scale_used_anywhere($scaleid) {
 function newmodule_install() {
     return true;
 }
-
 
 /**
  * Execute post-uninstall custom actions for the module

@@ -51,11 +51,10 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-/** remove this comment marks and modify the code as needed
 $mod_newmodule_capabilities = array(
 
+/***************************** remove these comment marks and modify the code as needed
     'mod/newmodule:view' => array(
-
         'captype' => 'read',
         'contextlevel' => CONTEXT_MODULE,
         'legacy' => array(
@@ -68,14 +67,13 @@ $mod_newmodule_capabilities = array(
     ),
 
     'mod/newmodule:submit' => array(
-
+        'riskbitmask' => RISK_SPAM,
         'captype' => 'write',
         'contextlevel' => CONTEXT_MODULE,
         'legacy' => array(
             'student' => CAP_ALLOW
         )
     ),
-
+******************************/
 );
 
-*/

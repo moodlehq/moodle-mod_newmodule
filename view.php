@@ -33,39 +33,23 @@ require_once(dirname(dirname(dirname(__FILE__))).'/config.php');
 require_once(dirname(__FILE__).'/lib.php');
 
 $id = optional_param('id', 0, PARAM_INT); // course_module ID, or
-$a  = optional_param('a', 0, PARAM_INT);  // newmodule instance ID
+$n  = optional_param('n', 0, PARAM_INT);  // newmodule instance ID - it should be named as the first character of the module
 
 if ($id) {
-    if (! $cm = get_coursemodule_from_id('newmodule', $id)) {
-        error('Course Module ID was incorrect');
-    }
-
-    if (! $course = $DB->get_record('course', array('id' => $cm->course))) {
-        error('Course is misconfigured');
-    }
-
-    if (! $newmodule = $DB->get_record('newmodule', array('id' => $cm->instance))) {
-        error('Course module is incorrect');
-    }
-
-} else if ($a) {
-    if (! $newmodule = $DB->get_record('newmodule', array('id' => $a))) {
-        error('Course module is incorrect');
-    }
-    if (! $course = $DB->get_record('course', array('id' => $newmodule->course))) {
-        error('Course is misconfigured');
-    }
-    if (! $cm = get_coursemodule_from_instance('newmodule', $newmodule->id, $course->id)) {
-        error('Course Module ID was incorrect');
-    }
-
+    $cm         = get_coursemodule_from_id('newmodule', $id, 0, false, MUST_EXIST);
+    $course     = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
+    $newmodule  = $DB->get_record('newmodule', array('id' => $cm->instance), '*', MUST_EXIST);
+} elseif ($n) {
+    $newmodule  = $DB->get_record('newmodule', array('id' => $n), '*', MUST_EXIST);
+    $course     = $DB->get_record('course', array('id' => $newmodule->course), '*', MUST_EXIST);
+    $cm         = get_coursemodule_from_instance('newmodule', $newmodule->id, $course->id, false, MUST_EXIST);
 } else {
     error('You must specify a course_module ID or an instance ID');
 }
 
 require_login($course, true, $cm);
 
-add_to_log($course->id, "newmodule", "view", "view.php?id=$cm->id", "$newmodule->id");
+add_to_log($course->id, 'newmodule', 'view', "view.php?id=$cm->id", $newmodule->name, $cm->id);
 
 /// Print the page header
 
@@ -78,23 +62,16 @@ $PAGE->set_button(update_module_button($cm->id, $course->id, get_string('modulen
 //$PAGE->set_cacheable(false);
 //$PAGE->set_focuscontrol('some-html-id');
 
-// TODO navigation will be changed yet for Moodle 2.0
-$navlinks   = array();
-$navlinks[] = array('name' => get_string('modulenameplural', 'newmodule'),
-                    'link' => "index.php?id=$course->id",
-                    'type' => 'activity');
-$navlinks[] = array('name' => format_string($newmodule->name),
-                    'link' => '',
-                    'type' => 'activityinstance');
-$navigation = build_navigation($navlinks);
-$menu       = navmenu($course, $cm);
+// Output starts here
+echo $OUTPUT->header();
 
-echo $OUTPUT->header($navigation, $menu);
+// Replace the following lines with you own code
+echo $OUTPUT->heading('Yay! It works!');
 
-/// Print the main part of the page
+$link       = new html_link();
+$link->url  = new moodle_url('http://docs.moodle.org/en/Development:NEWMODULE_Documentation');
+$link->text = 'Visit the NEWMODULE documentation page';
+echo $OUTPUT->link($link);
 
-echo 'YOUR CODE GOES HERE';
-
-
-/// Finish the page
+// Finish the page
 echo $OUTPUT->footer();
