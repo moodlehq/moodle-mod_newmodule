@@ -1,43 +1,42 @@
-This README file is based off the original README written
-by Martin Dougiamas
-
-However it as well as some of the code has been re-written so that the
-module will work with Moodle 2.0 and beyond (with luck)
-
-
 The following steps should get you up and running with
 this module template code.
 
-1. Unzip the archive and read this file
+* DO NOT PANIC!
 
-2. The module folder MUST be lower case before Moodle will recognize
-   it.
+* Unzip the archive and read this file
 
-3. Edit all the files in this directory and change all the
-   instances of newmodule to your new module name (eg widget).
+* Rename the NEWMODULE/ folder to the name of your module (eg "widget").
+  The module folder MUST be lower case. You should check the CVS contrib
+  area at http://cvs.moodle.org/contrib/plugins/mod/ to make sure that
+  your name is not already used by an other module.
 
-4. Place the newmodule folder into the /mod folder of the moodle
-   directory.
+* Edit all the files in this directory and its subdirectories and change
+  all the instances of the string "newmodule" to your module name
+  (eg "widget"). If you are using Linux, you can use the following command
+  $ find . -type f -exec sed -i 's/newmodule/widget/g' {} \;
 
-5. As Admin goto Notifications and you should find the module's
-   databases successfully created
+* Rename the file lang/en_utf8/newmodule.php to lang/en_utf8/widget.php
+  where "widget" is the name of your module
 
-6. Now go to Modules then to Activities in the Site Administration block
-   And you should find that this newmodule has been added
-   to the list of recognized modules.
+* Place the widget folder into the /mod folder of the moodle
+  directory.
 
-7. You may now proceed to run your own code in an attempt to
-   develop for moodle. Good luck with that.
+* Go to Settings > Site Administration > Development > XMLDB editor
+  and modify the module's tables.
 
+* Modify version.php and set the initial version of you module.
 
-For help with developing code for moodle, visit
-the "Activity modules" developers forum in the online
-course called "Using Moodle" at http:/* moodle.org */
+* Visit Settings > Site Administration > Notifications, you should find
+  the module's tables successfully created
 
-Or email Martin Dougiamas at:  martin@moodle.com
+* Go to Site Administration > Plugins > Activity modules > Manage activities
+  and you should find that this newmodule has been added to the list of
+  installed modules.
 
-For more information about the reviser
-of the original NEWMODULE template
-visit http://www.welcometochrisworld.com
--Chris B Stones
-February 28, 2007
+* You may now proceed to run your own code in an attempt to develop
+  your module. You will probably want to modify mod_form.php and view.php
+  as a first step. Check db/access.php to add capabilities.
+
+We encourage you to share your code and experience - visit http://moodle.org
+
+Good luck!
