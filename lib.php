@@ -211,16 +211,6 @@ function newmodule_scale_used_anywhere($scaleid) {
 }
 
 /**
- * Execute post-install custom actions for the module
- * This function was added in 1.9
- *
- * @return boolean true if success, false on error
- */
-function newmodule_install() {
-    return true;
-}
-
-/**
  * Execute post-uninstall custom actions for the module
  * This function was added in 1.9
  *
