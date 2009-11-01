@@ -98,7 +98,7 @@ function newmodule_delete_instance($id) {
 
     # Delete any dependent records here #
 
-    $DB->delete_records('newmodule', array('id' => $newmodule->id)) {
+    $DB->delete_records('newmodule', array('id' => $newmodule->id));
 
     return true;
 }
