@@ -28,7 +28,7 @@
  *
  * It is important that capability names are unique. The naming convention
  * for capabilities that are specific to modules and blocks is as follows:
- *   [mod/block]/<component_name>:<capabilityname>
+ *   [mod/block]/<plugin_name>:<capabilityname>
  *
  * component_name should be the same as the directory name of the mod or block.
  *
