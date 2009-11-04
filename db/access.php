@@ -39,10 +39,7 @@
  *           block/recent_activity:view
  *           moodle/site:deleteuser
  *
- * The variable name for the capability definitions array follows the format
- *   $<componenttype>_<component_name>_capabilities
- *
- * For the core capabilities, the variable is $moodle_capabilities.
+ * The variable name for the capability definitions array is $capabilities
  *
  * @package   mod-newmodule
  * @copyright 2009 Your Name
@@ -51,7 +48,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$mod_newmodule_capabilities = array(
+$capabilities = array(
 
 /***************************** remove these comment marks and modify the code as needed
     'mod/newmodule:view' => array(
