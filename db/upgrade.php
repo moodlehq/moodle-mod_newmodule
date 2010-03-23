@@ -27,8 +27,8 @@
  * here will all be database-neutral, using the functions defined in
  * lib/ddllib.php
  *
- * @package   mod-newmodule
- * @copyright 2009 Your Name
+ * @package   mod_newmodule
+ * @copyright 2010 Your Name
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

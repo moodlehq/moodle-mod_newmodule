@@ -22,14 +22,14 @@
  * This code fragment is called by moodle_needs_upgrading() and
  * /admin/index.php
  *
- * @package   mod-newmodule
- * @copyright 2009 Your Name
+ * @package   mod_newmodule
+ * @copyright 2010 Your Name
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 $module->version  = 0;           // If version == 0 then module will not be installed
-//$module->version  = 2009052000;  // The current module version (Date: YYYYMMDDXX)
-$module->requires = 2009090400;  // Requires this Moodle version
+//$module->version  = 2010032200;  // The current module version (Date: YYYYMMDDXX)
+$module->requires = 2010031900;  // Requires this Moodle version
 $module->cron     = 0;           // Period for cron to check this module (secs)

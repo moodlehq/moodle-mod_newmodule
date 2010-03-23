@@ -22,8 +22,8 @@
  * You can have a rather longer description of the file as well,
  * if you like, and it can span multiple lines.
  *
- * @package   mod-newmodule
- * @copyright 2009 Your Name
+ * @package   mod_newmodule
+ * @copyright 2010 Your Name
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -67,11 +67,6 @@ echo $OUTPUT->header();
 
 // Replace the following lines with you own code
 echo $OUTPUT->heading('Yay! It works!');
-
-$link       = new html_link();
-$link->url  = new moodle_url('http://docs.moodle.org/en/Development:NEWMODULE_Documentation');
-$link->text = 'Visit the NEWMODULE documentation page';
-echo $OUTPUT->link($link);
 
 // Finish the page
 echo $OUTPUT->footer();

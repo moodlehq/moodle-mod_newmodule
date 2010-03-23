@@ -19,8 +19,8 @@
  * This file replaces the legacy STATEMENTS section in db/install.xml,
  * lib.php/modulename_install() post installation hook and partially defaults.php
  *
- * @package   mod-newmodule
- * @copyright 2009 Your Name <your@email.adress>
+ * @package   mod_newmodule
+ * @copyright 2010 Your Name <your@email.adress>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

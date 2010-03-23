@@ -22,8 +22,8 @@
  * All the newmodule specific functions, needed to implement the module
  * logic, should go here. Never include this file from your lib.php!
  *
- * @package   mod-newmodule
- * @copyright 2009 Your Name
+ * @package   mod_newmodule
+ * @copyright 2010 Your Name
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

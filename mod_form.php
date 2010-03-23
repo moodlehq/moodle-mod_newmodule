@@ -22,8 +22,8 @@
  * It uses the standard core Moodle formslib. For more info about them, please
  * visit: http://docs.moodle.org/en/Development:lib/formslib.php
  *
- * @package   mod-newmodule
- * @copyright 2009 Your Name
+ * @package   mod_newmodule
+ * @copyright 2010 Your Name
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
