@@ -58,6 +58,11 @@ $PAGE->set_title($newmodule->name);
 $PAGE->set_heading($course->shortname);
 $PAGE->set_button(update_module_button($cm->id, $course->id, get_string('modulename', 'newmodule')));
 
+// Basic access control checks
+if (empty($cm->visible) and !has_capability('moodle/course:viewhiddenactivities', $context)) {
+    notice(get_string('activityiscurrentlyhidden'));
+}
+
 // other things you may want to set - remove if not needed
 //$PAGE->set_cacheable(false);
 //$PAGE->set_focuscontrol('some-html-id');
