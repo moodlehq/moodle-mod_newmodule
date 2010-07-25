@@ -156,13 +156,14 @@ function newmodule_cron () {
 }
 
 /**
- * Must return an array of user records (all data) who are participants
- * for a given instance of newmodule. Must include every user involved
- * in the instance, independient of his role (student, teacher, admin...)
+ * Must return an array of users who are participants for a given instance
+ * of newmodule. Must include every user involved in the instance,
+ * independient of his role (student, teacher, admin...). The returned
+ * objects must contain at least id property.
  * See other modules as example.
  *
  * @param int $newmoduleid ID of an instance of this module
- * @return mixed boolean/array of students
+ * @return boolean|array false if no participants, array of objects otherwise
  */
 function newmodule_get_participants($newmoduleid) {
     return false;
