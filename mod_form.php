@@ -51,6 +51,7 @@ class mod_newmodule_mod_form extends moodleform_mod {
         }
         $mform->addRule('name', null, 'required', null, 'client');
         $mform->addRule('name', get_string('maximumchars', '', 255), 'maxlength', 255, 'client');
+        $mform->addHelpButton('name', 'newmodulename', 'newmodule');
 
     /// Adding the standard "intro" and "introformat" fields
         $this->add_intro_editor();
@@ -62,8 +63,6 @@ class mod_newmodule_mod_form extends moodleform_mod {
 
         $mform->addElement('header', 'newmodulefieldset', get_string('newmodulefieldset', 'newmodule'));
         $mform->addElement('static', 'label2', 'newmodulesetting2', 'Your newmodule fields go here. Replace me!');
-        // Here is how you can add help (?) icons to your field labels
-        $mform->setHelpButton('label2', array('helpfilename', 'newmodulesetting2', 'newmodule'));
 
 //-------------------------------------------------------------------------------
         // add standard elements, common to all modules

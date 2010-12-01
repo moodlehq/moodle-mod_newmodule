@@ -33,4 +33,5 @@ $string['modulename'] = 'newmodule';
 $string['modulenameplural'] = 'newmodules';
 $string['newmodulefieldset'] = 'Custom example fieldset';
 $string['newmodulename'] = 'newmodule name';
+$string['newmodulename_help'] = 'This is the content of the help tooltip associated with the newmodulename field. Markdown syntax is supported.';
 $string['newmodule'] = 'newmodule';
