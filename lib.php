@@ -139,7 +139,7 @@ function newmodule_user_complete($course, $user, $mod, $newmodule) {
  * @return boolean
  * @todo Finish documenting this function
  */
-function newmodule_print_recent_activity($course, $isteacher, $timestart) {
+function newmodule_print_recent_activity($course, $viewfullnames, $timestart) {
     return false;  //  True if anything was printed, otherwise false
 }
 
