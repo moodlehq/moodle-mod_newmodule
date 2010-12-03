@@ -53,7 +53,7 @@ add_to_log($course->id, 'newmodule', 'view', "view.php?id=$cm->id", $newmodule->
 
 /// Print the page header
 
-$PAGE->set_url('mod/newmodule/view.php', array('id' => $cm->id));
+$PAGE->set_url('/mod/newmodule/view.php', array('id' => $cm->id));
 $PAGE->set_title($newmodule->name);
 $PAGE->set_heading($course->shortname);
 $PAGE->set_button(update_module_button($cm->id, $course->id, get_string('modulename', 'newmodule')));

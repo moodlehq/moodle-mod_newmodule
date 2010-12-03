@@ -28,11 +28,7 @@
  * Post installation procedure
  */
 function xmldb_newmodule_install() {
-    global $DB;
 
-    // Install default common logging actions
-    update_log_display_entry('newmodule', 'add', 'newmodule', 'name');
-    update_log_display_entry('newmodule', 'update', 'newmodule', 'name');
-    update_log_display_entry('newmodule', 'view', 'newmodule', 'name');
-    update_log_display_entry('newmodule', 'view all', 'newmodule', 'name');
+    /// insert here code to perform some actions
+    
 }
