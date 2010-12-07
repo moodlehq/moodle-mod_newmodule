@@ -44,7 +44,7 @@ add_to_log($course->id, 'newmodule', 'view all', "index.php?id=$course->id", '')
 
 /// Print the header
 
-$PAGE->set_url('mod/newmodule/view.php', array('id' => $id));
+$PAGE->set_url('/mod/newmodule/view.php', array('id' => $id));
 $PAGE->set_title($course->fullname);
 $PAGE->set_heading($course->shortname);
 
