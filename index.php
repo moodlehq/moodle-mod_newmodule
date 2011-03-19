@@ -39,15 +39,23 @@ if (! $course = $DB->get_record('course', array('id' => $id))) {
 }
 
 require_course_login($course);
+$context = get_context_instance(CONTEXT_COURSE, $course->id);
 
-add_to_log($course->id, 'newmodule', 'view all', "index.php?id=$course->id", '');
+add_to_log($course->id, 'newmodule', 'view all', "index.php?id={$course->id}", '');
 
 /// Print the header
 
-$PAGE->set_url('/mod/newmodule/view.php', array('id' => $id));
-$PAGE->set_title($course->fullname);
-$PAGE->set_heading($course->shortname);
+$PAGE->set_url('/mod/newmodule/index.php', array('id' => $id));
+$PAGE->set_title(format_string($course->fullname));
+$PAGE->set_heading(format_string($course->fullname));
+$PAGE->set_context($context);
 
+// other things you may want to set - remove if not needed
+//$PAGE->set_cacheable(false);
+//$PAGE->set_focuscontrol('some-html-id');
+//$PAGE->add_body_class('newmodule-'.$somevar);
+
+// Output starts here
 echo $OUTPUT->header();
 
 /// Get all the appropriate data

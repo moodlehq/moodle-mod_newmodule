@@ -48,19 +48,21 @@ if ($id) {
 }
 
 require_login($course, true, $cm);
+$context = get_context_instance(CONTEXT_MODULE, $cm->id);
 
-add_to_log($course->id, 'newmodule', 'view', "view.php?id=$cm->id", $newmodule->name, $cm->id);
+add_to_log($course->id, 'newmodule', 'view', "view.php?id={$cm->id}", $newmodule->name, $cm->id);
 
 /// Print the page header
 
 $PAGE->set_url('/mod/newmodule/view.php', array('id' => $cm->id));
-$PAGE->set_title($newmodule->name);
-$PAGE->set_heading($course->shortname);
-$PAGE->set_button(update_module_button($cm->id, $course->id, get_string('modulename', 'newmodule')));
+$PAGE->set_title(format_string($newmodule->name));
+$PAGE->set_heading(format_string($course->fullname));
+$PAGE->set_context($context);
 
 // other things you may want to set - remove if not needed
 //$PAGE->set_cacheable(false);
 //$PAGE->set_focuscontrol('some-html-id');
+//$PAGE->add_body_class('newmodule-'.$somevar);
 
 // Output starts here
 echo $OUTPUT->header();
