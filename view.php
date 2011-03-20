@@ -68,7 +68,7 @@ $PAGE->set_context($context);
 echo $OUTPUT->header();
 
 if ($newmodule->intro) { // Conditions to show the intro can change to look for own settings or whatever
-    echo $OUTPUT->box(format_module_intro('newmodule', $newmodule, $cm->id), 'mod_introbox', 'newmoduleintro');
+    echo $OUTPUT->box(format_module_intro('newmodule', $newmodule, $cm->id), 'generalbox mod_introbox', 'newmoduleintro');
 }
 
 // Replace the following lines with you own code
