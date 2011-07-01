@@ -16,25 +16,17 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Internal library of functions for module newmodule
- *
- * All the newmodule specific functions, needed to implement the module
- * logic, should go here. Never include this file from your lib.php!
+ * @see uninstall_plugin()
  *
  * @package    mod
  * @subpackage newmodule
- * @copyright  2011 Your Name
+ * @copyright  2011 Your Name <your@email.adress>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
- * Does something really useful with the passed things
- *
- * @param array $things
- * @return object
+ * Custom uninstallation procedure
  */
-//function newmodule_do_something_useful(array $things) {
-//    return new stdClass();
-//}
+function xmldb_newmodule_uninstall() {
+    return true;
+}

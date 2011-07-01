@@ -22,9 +22,10 @@
  * This code fragment is called by moodle_needs_upgrading() and
  * /admin/index.php
  *
- * @package   mod_newmodule
- * @copyright 2010 Your Name
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    mod
+ * @subpackage newmodule
+ * @copyright  2011 Your Name
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();

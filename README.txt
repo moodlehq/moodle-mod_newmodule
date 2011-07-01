@@ -5,7 +5,7 @@ this module template code.
 
 * Unzip the archive and read this file
 
-* Rename the NEWMODULE/ folder to the name of your module (eg "widget").
+* Rename the newmodule/ folder to the name of your module (eg "widget").
   The module folder MUST be lower case. You should check the CVS contrib
   area at http://cvs.moodle.org/contrib/plugins/mod/ to make sure that
   your name is not already used by an other module.
@@ -15,7 +15,7 @@ this module template code.
   (eg "widget"). If you are using Linux, you can use the following command
   $ find . -type f -exec sed -i 's/newmodule/widget/g' {} \;
 
-* Rename the file lang/en_utf8/newmodule.php to lang/en_utf8/widget.php
+* Rename the file lang/en/newmodule.php to lang/en/widget.php
   where "widget" is the name of your module
 
 * Place the widget folder into the /mod folder of the moodle
