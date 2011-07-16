@@ -62,9 +62,10 @@ function newmodule_supports($feature) {
  * of the new instance.
  *
  * @param object $newmodule An object from the form in mod_form.php
+ * @param mod_newmodule_mod_form $mform
  * @return int The id of the newly inserted newmodule record
  */
-function newmodule_add_instance($newmodule) {
+function newmodule_add_instance(stdClass $newmodule, mod_newmodule_mod_form $mform = null) {
     global $DB;
 
     $newmodule->timecreated = time();
@@ -82,9 +83,10 @@ function newmodule_add_instance($newmodule) {
  * will update an existing instance with new data.
  *
  * @param object $newmodule An object from the form in mod_form.php
+ * @param mod_newmodule_mod_form $mform
  * @return boolean Success/Fail
  */
-function newmodule_update_instance($newmodule) {
+function newmodule_update_instance(stdClass $newmodule, mod_newmodule_mod_form $mform = null) {
     global $DB;
 
     $newmodule->timemodified = time();
