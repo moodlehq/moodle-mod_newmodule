@@ -142,10 +142,13 @@ function newmodule_user_outline($course, $user, $mod, $newmodule) {
  * Prints a detailed representation of what a user has done with
  * a given particular instance of this module, for user activity reports.
  *
- * @return string HTML
+ * @param stdClass $course the current course record
+ * @param stdClass $user the record of the user we are generating report for
+ * @param cm_info $mod course module info
+ * @param stdClass $newmodule the module instance record
+ * @return void, is supposed to echp directly
  */
 function newmodule_user_complete($course, $user, $mod, $newmodule) {
-    return '';
 }
 
 /**
