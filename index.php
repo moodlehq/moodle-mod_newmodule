@@ -34,76 +34,55 @@ require_once(dirname(__FILE__).'/lib.php');
 
 $id = required_param('id', PARAM_INT);   // course
 
-if (! $course = $DB->get_record('course', array('id' => $id))) {
-    error('Course ID is incorrect');
-}
+$course = $DB->get_record('course', array('id' => $id), '*', MUST_EXIST);
 
 require_course_login($course);
-$context = get_context_instance(CONTEXT_COURSE, $course->id);
 
-add_to_log($course->id, 'newmodule', 'view all', "index.php?id={$course->id}", '');
+add_to_log($course->id, 'newmodule', 'view all', 'index.php?id='.$course->id, '');
 
-/// Print the header
+$coursecontext = get_context_instance(CONTEXT_COURSE, $course->id);
 
 $PAGE->set_url('/mod/newmodule/index.php', array('id' => $id));
 $PAGE->set_title(format_string($course->fullname));
 $PAGE->set_heading(format_string($course->fullname));
-$PAGE->set_context($context);
+$PAGE->set_context($coursecontext);
 
-// other things you may want to set - remove if not needed
-//$PAGE->set_cacheable(false);
-//$PAGE->set_focuscontrol('some-html-id');
-//$PAGE->add_body_class('newmodule-'.$somevar);
-
-// Output starts here
 echo $OUTPUT->header();
 
-/// Get all the appropriate data
-
 if (! $newmodules = get_all_instances_in_course('newmodule', $course)) {
-    echo $OUTPUT->heading(get_string('nonewmodules', 'newmodule'), 2);
-    echo $OUTPUT->continue_button("view.php?id=$course->id");
-    echo $OUTPUT->footer();
-    die();
+    notice(get_string('nonewmodules', 'newmodule'), new moodle_url('/course/view.php', array('id' => $course->id)));
 }
 
-/// Print the list of instances (your module will probably extend this)
-
-$timenow  = time();
-$strname  = get_string('name');
-$strweek  = get_string('week');
-$strtopic = get_string('topic');
-
 if ($course->format == 'weeks') {
-    $table->head  = array ($strweek, $strname);
-    $table->align = array ('center', 'left');
+    $table->head  = array(get_string('week'), get_string('name'));
+    $table->align = array('center', 'left');
 } else if ($course->format == 'topics') {
-    $table->head  = array ($strtopic, $strname);
-    $table->align = array ('center', 'left', 'left', 'left');
+    $table->head  = array(get_string('topic'), get_string('name'));
+    $table->align = array('center', 'left', 'left', 'left');
 } else {
-    $table->head  = array ($strname);
-    $table->align = array ('left', 'left', 'left');
+    $table->head  = array(get_string('name'));
+    $table->align = array('left', 'left', 'left');
 }
 
 foreach ($newmodules as $newmodule) {
     if (!$newmodule->visible) {
-        //Show dimmed if the mod is hidden
-        $link = '<a class="dimmed" href="view.php?id='.$newmodule->coursemodule.'">'.format_string($newmodule->name).'</a>';
+        $link = html_writer::link(
+            new moodle_url('/mod/newmodule.php', array('id' => $newmodule->coursemodule)),
+            format_string($newmodule->name, true),
+            array('class' => 'dimmed'));
     } else {
-        //Show normal if the mod is visible
-        $link = '<a href="view.php?id='.$newmodule->coursemodule.'">'.format_string($newmodule->name).'</a>';
+        $link = html_writer::link(
+            new moodle_url('/mod/newmodule.php', array('id' => $newmodule->coursemodule)),
+            format_string($newmodule->name, true));
     }
 
     if ($course->format == 'weeks' or $course->format == 'topics') {
-        $table->data[] = array ($newmodule->section, $link);
+        $table->data[] = array($newmodule->section, $link);
     } else {
-        $table->data[] = array ($link);
+        $table->data[] = array($link);
     }
 }
 
 echo $OUTPUT->heading(get_string('modulenameplural', 'newmodule'), 2);
-print_table($table);
-
-/// Finish the page
-
+echo html_writer::table($table);
 echo $OUTPUT->footer();
