@@ -317,17 +317,41 @@ function newmodule_get_file_areas($course, $cm, $context) {
 }
 
 /**
- * Serves the files from the newmodule file areas
+ * File browsing support for newmodule file areas
  *
+ * @package mod_newmodule
+ * @category files
+ *
+ * @param file_browser $browser
+ * @param array $areas
  * @param stdClass $course
  * @param stdClass $cm
  * @param stdClass $context
  * @param string $filearea
- * @param array $args
- * @param bool $forcedownload
- * @return void this should never return to the caller
+ * @param int $itemid
+ * @param string $filepath
+ * @param string $filename
+ * @return file_info instance or null if not found
  */
-function newmodule_pluginfile($course, $cm, $context, $filearea, array $args, $forcedownload) {
+function newmodule_get_file_info($browser, $areas, $course, $cm, $context, $filearea, $itemid, $filepath, $filename) {
+    return null;
+}
+
+/**
+ * Serves the files from the newmodule file areas
+ *
+ * @package mod_newmodule
+ * @category files
+ *
+ * @param stdClass $course the course object
+ * @param stdClass $cm the course module object
+ * @param stdClass $context the newmodule's context
+ * @param string $filearea the name of the file area
+ * @param array $args extra arguments (itemid, path)
+ * @param bool $forcedownload whether or not force download
+ * @param array $options additional options affecting the file serving
+ */
+function newmodule_pluginfile($course, $cm, $context, $filearea, array $args, $forcedownload, array $options=array()) {
     global $DB, $CFG;
 
     if ($context->contextlevel != CONTEXT_MODULE) {
