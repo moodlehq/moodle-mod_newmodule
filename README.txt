@@ -8,7 +8,8 @@ this module template code.
 * Rename the newmodule/ folder to the name of your module (eg "widget").
   The module folder MUST be lower case. You should check the CVS contrib
   area at http://cvs.moodle.org/contrib/plugins/mod/ to make sure that
-  your name is not already used by an other module.
+  your name is not already used by an other module. Registering the plugin
+  name @ http://moodle.org/plugins will secure it for you.
 
 * Edit all the files in this directory and its subdirectories and change
   all the instances of the string "newmodule" to your module name
