@@ -17,7 +17,7 @@ this module template code.
   $ find . -type f -exec sed -i 's/newmodule/widget/g' {} \;
   
   On a mac, use:
-  $ find . -type f -exec sed -i '' 's/newmodule/widget/g' {};
+  $ find . -type f -exec sed -i '' 's/newmodule/widget/g' {} \;
 
 * Rename the file lang/en/newmodule.php to lang/en/widget.php
   where "widget" is the name of your module
