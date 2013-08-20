@@ -261,9 +261,10 @@ function newmodule_scale_used_anywhere($scaleid) {
  * Needed by grade_update_mod_grades() in lib/gradelib.php
  *
  * @param stdClass $newmodule instance object with extra cmidnumber and modname property
+ * @param mixed optional array/object of grade(s); 'reset' means reset grades in gradebook
  * @return void
  */
-function newmodule_grade_item_update(stdClass $newmodule) {
+function newmodule_grade_item_update(stdClass $newmodule, $grades=null) {
     global $CFG;
     require_once($CFG->libdir.'/gradelib.php');
 
