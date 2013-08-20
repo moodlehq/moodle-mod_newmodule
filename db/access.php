@@ -48,8 +48,20 @@
 defined('MOODLE_INTERNAL') || die();
 
 $capabilities = array(
-
 /***************************** remove these comment marks and modify the code as needed
+
+	'mod/newmodule:addinstance' => array(
+			'riskbitmask' => RISK_XSS,
+	
+			'captype' => 'write',
+			'contextlevel' => CONTEXT_COURSE,
+			'archetypes' => array(
+					'editingteacher' => CAP_ALLOW,
+					'manager' => CAP_ALLOW
+			),
+			'clonepermissionsfrom' => 'moodle/course:manageactivities'
+	),
+
     'mod/newmodule:view' => array(
         'captype' => 'read',
         'contextlevel' => CONTEXT_MODULE,
