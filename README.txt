@@ -27,6 +27,8 @@ this module template code.
 
 * Go to Settings > Site Administration > Development > XMLDB editor
   and modify the module's tables.
+  Make sure, that the web server has write-access to the db/ folder.
+  You need at least one table, even if your module doesn't use it.
 
 * Modify version.php and set the initial version of you module.
 
