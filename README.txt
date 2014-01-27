@@ -6,7 +6,7 @@ this module template code.
 * Unzip the archive and read this file
 
 * Rename the newmodule/ folder to the name of your module (eg "widget").
-  The module folder MUST be lower case. You should check the CVS contrib
+  The module folder MUST be lower case and can't contain underscores. You should check the CVS contrib
   area at http://cvs.moodle.org/contrib/plugins/mod/ to make sure that
   your name is not already used by an other module. Registering the plugin
   name @ http://moodle.org/plugins will secure it for you.
