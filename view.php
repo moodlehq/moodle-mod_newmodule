@@ -49,7 +49,14 @@ if ($id) {
 require_login($course, true, $cm);
 $context = context_module::instance($cm->id);
 
-add_to_log($course->id, 'newmodule', 'view', "view.php?id={$cm->id}", $newmodule->name, $cm->id);
+$event = \mod_newmodule\event\course_module_viewed::create(array(
+    'objectid' => $PAGE->cm->instance,
+    'context' => $PAGE->context,
+));
+$event->add_record_snapshot('course', $PAGE->course);
+// In the next line you can use $PAGE->activityrecord if you have set it, or skip this line if you don't have a record.
+$event->add_record_snapshot($PAGE->cm->modname, $activityrecord);
+$event->trigger();
 
 /// Print the page header
 
