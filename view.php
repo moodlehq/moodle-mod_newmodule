@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -26,19 +25,19 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-/// (Replace newmodule with the name of your module and remove this line)
+// Replace newmodule with the name of your module and remove this line.
 
 require_once(dirname(dirname(dirname(__FILE__))).'/config.php');
 require_once(dirname(__FILE__).'/lib.php');
 
-$id = optional_param('id', 0, PARAM_INT); // course_module ID, or
-$n  = optional_param('n', 0, PARAM_INT);  // newmodule instance ID - it should be named as the first character of the module
+$id = optional_param('id', 0, PARAM_INT); // Course_module ID, or
+$n  = optional_param('n', 0, PARAM_INT);  // ... newmodule instance ID - it should be named as the first character of the module.
 
 if ($id) {
     $cm         = get_coursemodule_from_id('newmodule', $id, 0, false, MUST_EXIST);
     $course     = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
     $newmodule  = $DB->get_record('newmodule', array('id' => $cm->instance), '*', MUST_EXIST);
-} elseif ($n) {
+} else if ($n) {
     $newmodule  = $DB->get_record('newmodule', array('id' => $n), '*', MUST_EXIST);
     $course     = $DB->get_record('course', array('id' => $newmodule->course), '*', MUST_EXIST);
     $cm         = get_coursemodule_from_instance('newmodule', $newmodule->id, $course->id, false, MUST_EXIST);
@@ -51,27 +50,30 @@ $context = context_module::instance($cm->id);
 
 add_to_log($course->id, 'newmodule', 'view', "view.php?id={$cm->id}", $newmodule->name, $cm->id);
 
-/// Print the page header
+// Print the page header.
 
 $PAGE->set_url('/mod/newmodule/view.php', array('id' => $cm->id));
 $PAGE->set_title(format_string($newmodule->name));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($context);
 
-// other things you may want to set - remove if not needed
-//$PAGE->set_cacheable(false);
-//$PAGE->set_focuscontrol('some-html-id');
-//$PAGE->add_body_class('newmodule-'.$somevar);
+/*
+ * Other things you may want to set - remove if not needed.
+ * $PAGE->set_cacheable(false);
+ * $PAGE->set_focuscontrol('some-html-id');
+ * $PAGE->add_body_class('newmodule-'.$somevar);
+ */
 
-// Output starts here
+// Output starts here.
 echo $OUTPUT->header();
 
-if ($newmodule->intro) { // Conditions to show the intro can change to look for own settings or whatever
+// Conditions to show the intro can change to look for own settings or whatever.
+if ($newmodule->intro) {
     echo $OUTPUT->box(format_module_intro('newmodule', $newmodule, $cm->id), 'generalbox mod_introbox', 'newmoduleintro');
 }
 
-// Replace the following lines with you own code
+// Replace the following lines with you own code.
 echo $OUTPUT->heading('Yay! It works!');
 
-// Finish the page
+// Finish the page.
 echo $OUTPUT->footer();

@@ -27,7 +27,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-/**
+/*
  * Does something really useful with the passed things
  *
  * @param array $things

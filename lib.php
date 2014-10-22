@@ -30,7 +30,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-/**
+/*
  * Example constant:
  * define('NEWMODULE_ULTIMATE_ANSWER', 42);
  */
@@ -296,8 +296,7 @@ function newmodule_update_grades(stdClass $newmodule, $userid = 0) {
     global $CFG, $DB;
     require_once($CFG->libdir.'/gradelib.php');
 
-    /* @example */
-    $grades = array(); // Populate array of grade objects indexed by userid.
+    $grades = array(); // Populate array of grade objects indexed by userid. @example .
 
     grade_update('mod/newmodule', $newmodule->course, 'mod', 'newmodule', $newmodule->id, 0, $grades);
 }
