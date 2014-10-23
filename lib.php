@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -31,12 +30,14 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-/** example constant */
-//define('NEWMODULE_ULTIMATE_ANSWER', 42);
+/*
+ * Example constant:
+ * define('NEWMODULE_ULTIMATE_ANSWER', 42);
+ */
 
-////////////////////////////////////////////////////////////////////////////////
-// Moodle core API                                                            //
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * Moodle core API
+ */
 
 /**
  * Returns the information on whether the module supports a feature
@@ -47,10 +48,12 @@ defined('MOODLE_INTERNAL') || die();
  */
 function newmodule_supports($feature) {
     switch($feature) {
-        case FEATURE_MOD_INTRO:         return true;
-        case FEATURE_SHOW_DESCRIPTION:  return true;
-
-        default:                        return null;
+        case FEATURE_MOD_INTRO:
+            return true;
+        case FEATURE_SHOW_DESCRIPTION:
+            return true;
+        default:
+            return null;
     }
 }
 
@@ -71,7 +74,7 @@ function newmodule_add_instance(stdClass $newmodule, mod_newmodule_mod_form $mfo
 
     $newmodule->timecreated = time();
 
-    # You may have to add extra stuff in here #
+    // You may have to add extra stuff in here.
 
     return $DB->insert_record('newmodule', $newmodule);
 }
@@ -93,7 +96,7 @@ function newmodule_update_instance(stdClass $newmodule, mod_newmodule_mod_form $
     $newmodule->timemodified = time();
     $newmodule->id = $newmodule->instance;
 
-    # You may have to add extra stuff in here #
+    // You may have to add extra stuff in here.
 
     return $DB->update_record('newmodule', $newmodule);
 }
@@ -115,7 +118,7 @@ function newmodule_delete_instance($id) {
         return false;
     }
 
-    # Delete any dependent records here #
+    // Delete any dependent records here.
 
     $DB->delete_records('newmodule', array('id' => $newmodule->id));
 
@@ -160,7 +163,7 @@ function newmodule_user_complete($course, $user, $mod, $newmodule) {
  * @return boolean
  */
 function newmodule_print_recent_activity($course, $viewfullnames, $timestart) {
-    return false;  //  True if anything was printed, otherwise false
+    return false; // True if anything was printed, otherwise false.
 }
 
 /**
@@ -184,7 +187,7 @@ function newmodule_get_recent_mod_activity(&$activities, &$index, $timestart, $c
 
 /**
  * Prints single activity item prepared by {@see newmodule_get_recent_mod_activity()}
-
+ *
  * @return void
  */
 function newmodule_print_recent_mod_activity($activity, $courseid, $detail, $modnames, $viewfullnames) {
@@ -212,9 +215,9 @@ function newmodule_get_extra_capabilities() {
     return array();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Gradebook API                                                              //
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * Gradebook API                                                              //
+ */
 
 /**
  * Is a given scale used by the instance of newmodule?
@@ -230,7 +233,7 @@ function newmodule_get_extra_capabilities() {
 function newmodule_scale_used($newmoduleid, $scaleid) {
     global $DB;
 
-    /** @example */
+    /* @example */
     if ($scaleid and $DB->record_exists('newmodule', array('id' => $newmoduleid, 'grade' => -$scaleid))) {
         return true;
     } else {
@@ -249,7 +252,7 @@ function newmodule_scale_used($newmoduleid, $scaleid) {
 function newmodule_scale_used_anywhere($scaleid) {
     global $DB;
 
-    /** @example */
+    /* @example */
     if ($scaleid and $DB->record_exists('newmodule', array('grade' => -$scaleid))) {
         return true;
     } else {
@@ -270,7 +273,7 @@ function newmodule_grade_item_update(stdClass $newmodule, $grades=null) {
     global $CFG;
     require_once($CFG->libdir.'/gradelib.php');
 
-    /** @example */
+    /* @example */
     $item = array();
     $item['itemname'] = clean_param($newmodule->name, PARAM_NOTAGS);
     $item['gradetype'] = GRADE_TYPE_VALUE;
@@ -293,15 +296,14 @@ function newmodule_update_grades(stdClass $newmodule, $userid = 0) {
     global $CFG, $DB;
     require_once($CFG->libdir.'/gradelib.php');
 
-    /** @example */
-    $grades = array(); // populate array of grade objects indexed by userid
+    $grades = array(); // Populate array of grade objects indexed by userid. @example .
 
     grade_update('mod/newmodule', $newmodule->course, 'mod', 'newmodule', $newmodule->id, 0, $grades);
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// File API                                                                   //
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * File API                                                                   //
+ */
 
 /**
  * Returns the lists of all browsable file areas within the given module context
@@ -365,9 +367,9 @@ function newmodule_pluginfile($course, $cm, $context, $filearea, array $args, $f
     send_file_not_found();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Navigation API                                                             //
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * Navigation API                                                             //
+ */
 
 /**
  * Extends the global navigation tree by adding newmodule nodes if there is a relevant content

@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -28,12 +27,12 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-/**
+/*
  * Does something really useful with the passed things
  *
  * @param array $things
  * @return object
+ *function newmodule_do_something_useful(array $things) {
+ *    return new stdClass();
+ *}
  */
-//function newmodule_do_something_useful(array $things) {
-//    return new stdClass();
-//}

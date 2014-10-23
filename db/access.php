@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -47,20 +46,18 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+// Modify capabilities as needed and remove this comment.
 $capabilities = array(
-/***************************** remove these comment marks and modify the code as needed
-
-	'mod/newmodule:addinstance' => array(
-			'riskbitmask' => RISK_XSS,
-	
-			'captype' => 'write',
-			'contextlevel' => CONTEXT_COURSE,
-			'archetypes' => array(
-					'editingteacher' => CAP_ALLOW,
-					'manager' => CAP_ALLOW
-			),
-			'clonepermissionsfrom' => 'moodle/course:manageactivities'
-	),
+    'mod/newmodule:addinstance' => array(
+        'riskbitmask' => RISK_XSS,
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_COURSE,
+        'archetypes' => array(
+            'editingteacher' => CAP_ALLOW,
+            'manager' => CAP_ALLOW
+        ),
+        'clonepermissionsfrom' => 'moodle/course:manageactivities'
+    ),
 
     'mod/newmodule:view' => array(
         'captype' => 'read',
@@ -82,6 +79,4 @@ $capabilities = array(
             'student' => CAP_ALLOW
         )
     ),
-******************************/
 );
-
