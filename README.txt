@@ -15,12 +15,18 @@ this module template code.
   all the instances of the string "newmodule" to your module name
   (eg "widget"). If you are using Linux, you can use the following command
   $ find . -type f -exec sed -i 's/newmodule/widget/g' {} \;
-  
+
   On a mac, use:
   $ find . -type f -exec sed -i '' 's/newmodule/widget/g' {} \;
 
 * Rename the file lang/en/newmodule.php to lang/en/widget.php
   where "widget" is the name of your module
+
+* Rename all files in backup/moodle2/ folder by replacing "newmodule" with
+  the name of your module
+
+  On Linux you can perform this and previous steps by calling:
+  $ find . -depth -name '*newmodule*' -execdir bash -c 'mv -i "$1" "${1//newmodule/widget}"' bash {} \;
 
 * Place the widget folder into the /mod folder of the moodle
   directory.
