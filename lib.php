@@ -52,6 +52,8 @@ function newmodule_supports($feature) {
             return true;
         case FEATURE_SHOW_DESCRIPTION:
             return true;
+        case FEATURE_GRADE_HAS_GRADE:
+            return true;
         default:
             return null;
     }
@@ -76,7 +78,11 @@ function newmodule_add_instance(stdClass $newmodule, mod_newmodule_mod_form $mfo
 
     // You may have to add extra stuff in here.
 
-    return $DB->insert_record('newmodule', $newmodule);
+    $newmodule->id = $DB->insert_record('newmodule', $newmodule);
+
+    newmodule_grade_item_update($newmodule);
+
+    return $newmodule->id;
 }
 
 /**
@@ -98,7 +104,11 @@ function newmodule_update_instance(stdClass $newmodule, mod_newmodule_mod_form $
 
     // You may have to add extra stuff in here.
 
-    return $DB->update_record('newmodule', $newmodule);
+    $result = $DB->update_record('newmodule', $newmodule);
+
+    newmodule_grade_item_update($newmodule);
+
+    return $result;
 }
 
 /**
@@ -121,6 +131,8 @@ function newmodule_delete_instance($id) {
     // Delete any dependent records here.
 
     $DB->delete_records('newmodule', array('id' => $newmodule->id));
+
+    newmodule_grade_item_delete($newmodule);
 
     return true;
 }
@@ -223,9 +235,7 @@ function newmodule_get_extra_capabilities() {
  * Is a given scale used by the instance of newmodule?
  *
  * This function returns if a scale is being used by one newmodule
- * if it has support for grading and scales. Commented code should be
- * modified if necessary. See forum, glossary or journal modules
- * as reference.
+ * if it has support for grading and scales.
  *
  * @param int $newmoduleid ID of an instance of this module
  * @return bool true if the scale is used by the given newmodule instance
@@ -233,7 +243,6 @@ function newmodule_get_extra_capabilities() {
 function newmodule_scale_used($newmoduleid, $scaleid) {
     global $DB;
 
-    /* @example */
     if ($scaleid and $DB->record_exists('newmodule', array('id' => $newmoduleid, 'grade' => -$scaleid))) {
         return true;
     } else {
@@ -252,7 +261,6 @@ function newmodule_scale_used($newmoduleid, $scaleid) {
 function newmodule_scale_used_anywhere($scaleid) {
     global $DB;
 
-    /* @example */
     if ($scaleid and $DB->record_exists('newmodule', array('grade' => -$scaleid))) {
         return true;
     } else {
@@ -261,7 +269,7 @@ function newmodule_scale_used_anywhere($scaleid) {
 }
 
 /**
- * Creates or updates grade item for the give newmodule instance
+ * Creates or updates grade item for the given newmodule instance
  *
  * Needed by grade_update_mod_grades() in lib/gradelib.php
  *
@@ -273,14 +281,42 @@ function newmodule_grade_item_update(stdClass $newmodule, $grades=null) {
     global $CFG;
     require_once($CFG->libdir.'/gradelib.php');
 
-    /* @example */
     $item = array();
     $item['itemname'] = clean_param($newmodule->name, PARAM_NOTAGS);
     $item['gradetype'] = GRADE_TYPE_VALUE;
-    $item['grademax']  = $newmodule->grade;
-    $item['grademin']  = 0;
 
-    grade_update('mod/newmodule', $newmodule->course, 'mod', 'newmodule', $newmodule->id, 0, null, $item);
+    if ($newmodule->grade > 0) {
+        $item['gradetype'] = GRADE_TYPE_VALUE;
+        $item['grademax']  = $newmodule->grade;
+        $item['grademin']  = 0;
+    } else if ($newmodule->grade < 0) {
+        $item['gradetype'] = GRADE_TYPE_SCALE;
+        $item['scaleid']   = -$newmodule->grade;
+    } else {
+        $item['gradetype'] = GRADE_TYPE_NONE;
+    }
+
+    if ($grades  === 'reset') {
+        $item['reset'] = true;
+        $grades = null;
+    }
+
+    grade_update('mod/newmodule', $newmodule->course, 'mod', 'newmodule',
+            $newmodule->id, 0, null, $item);
+}
+
+/**
+ * Delete grade item for given newmodule instance
+ *
+ * @param stdClass $newmodule instance object
+ * @return grade_item
+ */
+function newmodule_grade_item_delete($newmodule) {
+    global $CFG;
+    require_once($CFG->libdir.'/gradelib.php');
+
+    return grade_update('mod/newmodule', $newmodule->course, 'mod', 'newmodule',
+            $newmodule->id, 0, null, array('deleted'=>1));
 }
 
 /**
