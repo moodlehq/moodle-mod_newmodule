@@ -381,8 +381,9 @@ function newmodule_pluginfile($course, $cm, $context, $filearea, array $args, $f
  * @param stdClass $module
  * @param cm_info $cm
  */
-function newmodule_extend_navigation(navigation_node $navref, stdclass $course, stdclass $module, cm_info $cm) {
-}
+//function newmodule_extend_navigation(navigation_node $navref, stdclass $course, stdclass $module, cm_info $cm) {
+//    Uncomment to extend navigation for the activity.
+//}
 
 /**
  * Extends the settings navigation with the newmodule settings
