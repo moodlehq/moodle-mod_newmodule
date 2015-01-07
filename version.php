@@ -14,22 +14,23 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-
 /**
- * Defines the version of newmodule
+ * Defines the version and other meta-info about the plugin
  *
- * This code fragment is called by moodle_needs_upgrading() and
- * /admin/index.php
+ * Setting the $plugin->version to 0 prevents the plugin from being installed.
+ * See https://docs.moodle.org/dev/version.php for more info.
  *
  * @package    mod_newmodule
- * @copyright  2011 Your Name
+ * @copyright  2011 Your Name <your@email.address>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 0;               // The current module version (Date: YYYYMMDDXX).
-                                      // If version == 0 then module will not be installed.
-$plugin->requires  = 2014051200;      // Requires this Moodle version (Moodle 2.7).
-$plugin->cron      = 0;               // Period for cron to check this module (secs).
-$plugin->component = 'mod_newmodule'; // To check on upgrade, that module sits in correct place.
+$plugin->component = 'mod_newmodule';
+$plugin->version = 0;
+$plugin->release = 'v0.0';
+$plugin->requires = 2014051200;
+$plugin->maturity = MATURITY_ALPHA;
+$plugin->cron = 0;
+$plugin->dependencies = array();
