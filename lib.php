@@ -19,6 +19,7 @@
  *
  * All the core Moodle functions, neeeded to allow the module to work
  * integrated in Moodle should be placed here.
+ *
  * All the newmodule specific functions, needed to implement all the module
  * logic, should go to locallib.php. This will help to save some memory when
  * Moodle is performing actions across all modules.
@@ -30,23 +31,23 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-/*
- * Example constant:
- * define('NEWMODULE_ULTIMATE_ANSWER', 42);
- */
-
 /**
- * Moodle core API
+ * Example constant, you probably want to remove this :-)
  */
+define('NEWMODULE_ULTIMATE_ANSWER', 42);
+
+/* Moodle core API */
 
 /**
  * Returns the information on whether the module supports a feature
  *
- * @see plugin_supports() in lib/moodlelib.php
+ * See {@link plugin_supports()} for more info.
+ *
  * @param string $feature FEATURE_xx constant for requested feature
  * @return mixed true if the feature is supported, null if unknown
  */
 function newmodule_supports($feature) {
+
     switch($feature) {
         case FEATURE_MOD_INTRO:
             return true;
@@ -69,8 +70,8 @@ function newmodule_supports($feature) {
  * will create a new instance and return the id number
  * of the new instance.
  *
- * @param object $newmodule An object from the form in mod_form.php
- * @param mod_newmodule_mod_form $mform
+ * @param stdClass $newmodule Submitted data from the form in mod_form.php
+ * @param mod_newmodule_mod_form $mform The form instance itself (if needed)
  * @return int The id of the newly inserted newmodule record
  */
 function newmodule_add_instance(stdClass $newmodule, mod_newmodule_mod_form $mform = null) {
@@ -94,8 +95,8 @@ function newmodule_add_instance(stdClass $newmodule, mod_newmodule_mod_form $mfo
  * (defined by the form in mod_form.php) this function
  * will update an existing instance with new data.
  *
- * @param object $newmodule An object from the form in mod_form.php
- * @param mod_newmodule_mod_form $mform
+ * @param stdClass $newmodule An object from the form in mod_form.php
+ * @param mod_newmodule_mod_form $mform The form instance itself (if needed)
  * @return boolean Success/Fail
  */
 function newmodule_update_instance(stdClass $newmodule, mod_newmodule_mod_form $mform = null) {
@@ -143,9 +144,14 @@ function newmodule_delete_instance($id) {
  * Returns a small object with summary information about what a
  * user has done with a given particular instance of this module
  * Used for user activity reports.
+ *
  * $return->time = the time they did it
  * $return->info = a short text description
  *
+ * @param stdClass $course The course record
+ * @param stdClass $user The user record
+ * @param cm_info|stdClass $mod The course module info object or record
+ * @param stdClass $newmodule The newmodule instance record
  * @return stdClass|null
  */
 function newmodule_user_outline($course, $user, $mod, $newmodule) {
@@ -160,11 +166,12 @@ function newmodule_user_outline($course, $user, $mod, $newmodule) {
  * Prints a detailed representation of what a user has done with
  * a given particular instance of this module, for user activity reports.
  *
+ * It is supposed to echo directly without returning a value.
+ *
  * @param stdClass $course the current course record
  * @param stdClass $user the record of the user we are generating report for
  * @param cm_info $mod course module info
  * @param stdClass $newmodule the module instance record
- * @return void, is supposed to echp directly
  */
 function newmodule_user_complete($course, $user, $mod, $newmodule) {
 }
@@ -172,12 +179,14 @@ function newmodule_user_complete($course, $user, $mod, $newmodule) {
 /**
  * Given a course and a time, this module should find recent activity
  * that has occurred in newmodule activities and print it out.
- * Return true if there was output, or false is there was none.
  *
- * @return boolean
+ * @param stdClass $course The course record
+ * @param bool $viewfullnames Should we display full names
+ * @param int $timestart Print activity since this timestamp
+ * @return boolean True if anything was printed, otherwise false
  */
 function newmodule_print_recent_activity($course, $viewfullnames, $timestart) {
-    return false; // True if anything was printed, otherwise false.
+    return false;
 }
 
 /**
@@ -187,34 +196,41 @@ function newmodule_print_recent_activity($course, $viewfullnames, $timestart) {
  * custom activity records. These records are then rendered into HTML via
  * {@link newmodule_print_recent_mod_activity()}.
  *
- * @param array $activities sequentially indexed array of objects with the 'cmid' property
+ * Returns void, it adds items into $activities and increases $index.
+ *
+ * @param array $activities sequentially indexed array of objects with added 'cmid' property
  * @param int $index the index in the $activities to use for the next record
  * @param int $timestart append activity since this time
  * @param int $courseid the id of the course we produce the report for
  * @param int $cmid course module id
  * @param int $userid check for a particular user's activity only, defaults to 0 (all users)
  * @param int $groupid check for a particular group's activity only, defaults to 0 (all groups)
- * @return void adds items into $activities and increases $index
  */
 function newmodule_get_recent_mod_activity(&$activities, &$index, $timestart, $courseid, $cmid, $userid=0, $groupid=0) {
 }
 
 /**
- * Prints single activity item prepared by {@see newmodule_get_recent_mod_activity()}
+ * Prints single activity item prepared by {@link newmodule_get_recent_mod_activity()}
  *
- * @return void
+ * @param stdClass $activity activity record with added 'cmid' property
+ * @param int $courseid the id of the course we produce the report for
+ * @param bool $detail print detailed report
+ * @param array $modnames as returned by {@link get_module_types_names()}
+ * @param bool $viewfullnames display users' full names
  */
 function newmodule_print_recent_mod_activity($activity, $courseid, $detail, $modnames, $viewfullnames) {
 }
 
 /**
  * Function to be run periodically according to the moodle cron
+ *
  * This function searches for things that need to be done, such
  * as sending out mail, toggling flags etc ...
  *
+ * Note that this has been deprecated in favour of scheduled task API.
+ *
  * @return boolean
- * @todo Finish documenting this function
- **/
+ */
 function newmodule_cron () {
     return true;
 }
@@ -222,16 +238,16 @@ function newmodule_cron () {
 /**
  * Returns all other caps used in the module
  *
- * @example return array('moodle/site:accessallgroups');
+ * For example, this could be array('moodle/site:accessallgroups') if the
+ * module uses that capability.
+ *
  * @return array
  */
 function newmodule_get_extra_capabilities() {
     return array();
 }
 
-/**
- * Gradebook API                                                              //
- */
+/* Gradebook API */
 
 /**
  * Is a given scale used by the instance of newmodule?
@@ -240,6 +256,7 @@ function newmodule_get_extra_capabilities() {
  * if it has support for grading and scales.
  *
  * @param int $newmoduleid ID of an instance of this module
+ * @param int $scaleid ID of the scale
  * @return bool true if the scale is used by the given newmodule instance
  */
 function newmodule_scale_used($newmoduleid, $scaleid) {
@@ -257,7 +274,7 @@ function newmodule_scale_used($newmoduleid, $scaleid) {
  *
  * This is used to find out if scale used anywhere.
  *
- * @param $scaleid int
+ * @param int $scaleid ID of the scale
  * @return boolean true if the scale is used by any newmodule instance
  */
 function newmodule_scale_used_anywhere($scaleid) {
@@ -273,13 +290,13 @@ function newmodule_scale_used_anywhere($scaleid) {
 /**
  * Creates or updates grade item for the given newmodule instance
  *
- * Needed by grade_update_mod_grades() in lib/gradelib.php
+ * Needed by {@link grade_update_mod_grades()}.
  *
  * @param stdClass $newmodule instance object with extra cmidnumber and modname property
- * @param mixed optional array/object of grade(s); 'reset' means reset grades in gradebook
+ * @param bool $reset reset grades in the gradebook
  * @return void
  */
-function newmodule_grade_item_update(stdClass $newmodule, $grades=null) {
+function newmodule_grade_item_update(stdClass $newmodule, $reset=false) {
     global $CFG;
     require_once($CFG->libdir.'/gradelib.php');
 
@@ -298,9 +315,8 @@ function newmodule_grade_item_update(stdClass $newmodule, $grades=null) {
         $item['gradetype'] = GRADE_TYPE_NONE;
     }
 
-    if ($grades  === 'reset') {
+    if ($reset) {
         $item['reset'] = true;
-        $grades = null;
     }
 
     grade_update('mod/newmodule', $newmodule->course, 'mod', 'newmodule',
@@ -318,30 +334,28 @@ function newmodule_grade_item_delete($newmodule) {
     require_once($CFG->libdir.'/gradelib.php');
 
     return grade_update('mod/newmodule', $newmodule->course, 'mod', 'newmodule',
-            $newmodule->id, 0, null, array('deleted'=>1));
+            $newmodule->id, 0, null, array('deleted' => 1));
 }
 
 /**
  * Update newmodule grades in the gradebook
  *
- * Needed by grade_update_mod_grades() in lib/gradelib.php
+ * Needed by {@link grade_update_mod_grades()}.
  *
  * @param stdClass $newmodule instance object with extra cmidnumber and modname property
  * @param int $userid update grade of specific user only, 0 means all participants
- * @return void
  */
 function newmodule_update_grades(stdClass $newmodule, $userid = 0) {
     global $CFG, $DB;
     require_once($CFG->libdir.'/gradelib.php');
 
-    $grades = array(); // Populate array of grade objects indexed by userid. @example .
+    // Populate array of grade objects indexed by userid.
+    $grades = array();
 
     grade_update('mod/newmodule', $newmodule->course, 'mod', 'newmodule', $newmodule->id, 0, $grades);
 }
 
-/**
- * File API                                                                   //
- */
+/* File API */
 
 /**
  * Returns the lists of all browsable file areas within the given module context
@@ -405,9 +419,7 @@ function newmodule_pluginfile($course, $cm, $context, $filearea, array $args, $f
     send_file_not_found();
 }
 
-/**
- * Navigation API                                                             //
- */
+/* Navigation API */
 
 /**
  * Extends the global navigation tree by adding newmodule nodes if there is a relevant content
@@ -415,13 +427,13 @@ function newmodule_pluginfile($course, $cm, $context, $filearea, array $args, $f
  * This can be called by an AJAX request so do not rely on $PAGE as it might not be set up properly.
  *
  * @param navigation_node $navref An object representing the navigation tree node of the newmodule module instance
- * @param stdClass $course
- * @param stdClass $module
- * @param cm_info $cm
+ * @param stdClass $course current course record
+ * @param stdClass $module current newmodule instance record
+ * @param cm_info $cm course module information
  */
-//function newmodule_extend_navigation(navigation_node $navref, stdclass $course, stdclass $module, cm_info $cm) {
-//    Uncomment to extend navigation for the activity.
-//}
+function newmodule_extend_navigation(navigation_node $navref, stdClass $course, stdClass $module, cm_info $cm) {
+    // TODO Delete this function and its docblock, or implement it.
+}
 
 /**
  * Extends the settings navigation with the newmodule settings
@@ -429,8 +441,9 @@ function newmodule_pluginfile($course, $cm, $context, $filearea, array $args, $f
  * This function is called when the context for the page is a newmodule module. This is not called by AJAX
  * so it is safe to rely on the $PAGE.
  *
- * @param settings_navigation $settingsnav {@link settings_navigation}
- * @param navigation_node $newmodulenode {@link navigation_node}
+ * @param settings_navigation $settingsnav complete settings navigation tree
+ * @param navigation_node $newmodulenode newmodule administration node
  */
 function newmodule_extend_settings_navigation(settings_navigation $settingsnav, navigation_node $newmodulenode=null) {
+    // TODO Delete this function and its docblock, or implement it.
 }

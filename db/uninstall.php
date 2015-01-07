@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Provides code to be executed during the module uninstallation
+ *
  * @see uninstall_plugin()
  *
  * @package    mod_newmodule

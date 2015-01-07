@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Provides the restore activity task class
+ *
  * @package   mod_newmodule
  * @category  backup
  * @copyright 2011 Your Name <your@email.adress>
@@ -23,11 +25,12 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot . '/mod/newmodule/backup/moodle2/restore_newmodule_stepslib.php'); // Because it exists (must)
+require_once($CFG->dirroot . '/mod/newmodule/backup/moodle2/restore_newmodule_stepslib.php');
 
 /**
- * newmodule restore task that provides all the settings and steps to perform one
- * complete restore of the activity
+ * Restore task for the newmodule activity module
+ *
+ * Provides all the settings and steps to perform complete restore of the activity.
  *
  * @package   mod_newmodule
  * @category  backup
@@ -40,14 +43,14 @@ class restore_newmodule_activity_task extends restore_activity_task {
      * Define (add) particular settings this activity can have
      */
     protected function define_my_settings() {
-        // No particular settings for this activity
+        // No particular settings for this activity.
     }
 
     /**
      * Define (add) particular steps this activity can have
      */
     protected function define_my_steps() {
-        // label only has one structure step
+        // We have just one structure step here.
         $this->add_step(new restore_newmodule_activity_structure_step('newmodule_structure', 'newmodule.xml'));
     }
 

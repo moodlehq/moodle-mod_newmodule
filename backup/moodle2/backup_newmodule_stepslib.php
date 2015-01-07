@@ -35,26 +35,32 @@ defined('MOODLE_INTERNAL') || die;
  */
 class backup_newmodule_activity_structure_step extends backup_activity_structure_step {
 
+    /**
+     * Defines the backup structure of the module
+     *
+     * @return backup_nested_element
+     */
     protected function define_structure() {
 
-        // To know if we are including userinfo
+        // Get know if we are including userinfo.
         $userinfo = $this->get_setting_value('userinfo');
 
-        // Define each element separated
+        // Define the root element describing the newmodule instance.
         $newmodule = new backup_nested_element('newmodule', array('id'), array(
             'name', 'intro', 'introformat', 'grade'));
 
-        // Build the tree
+        // If we had more elements, we would build the tree here.
 
-        // Define sources
+        // Define data sources.
         $newmodule->set_source_table('newmodule', array('id' => backup::VAR_ACTIVITYID));
 
-        // Define id annotations
+        // If we were referring to other tables, we would annotate the relation
+        // with the element's annotate_ids() method.
 
-        // Define file annotations
-        $newmodule->annotate_files('mod_newmodule', 'intro', null); // This file areas haven't itemid
+        // Define file annotations (we do not use itemid in this example).
+        $newmodule->annotate_files('mod_newmodule', 'intro', null);
 
-        // Return the root element (newmodule), wrapped into standard activity structure
+        // Return the root element (newmodule), wrapped into standard activity structure.
         return $this->prepare_activity_structure($newmodule);
     }
 }

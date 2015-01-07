@@ -87,7 +87,7 @@ foreach ($modinfo->instances['newmodule'] as $cm) {
         }
     }
 
-    $class = $cm->visible ? null : array('class' => 'dimmed'); // hidden modules are dimmed
+    $class = $cm->visible ? null : array('class' => 'dimmed');
 
     $row[] = html_writer::link(new moodle_url('view.php', array('id' => $cm->id)),
                 $cm->get_formatted_name(), $class);
