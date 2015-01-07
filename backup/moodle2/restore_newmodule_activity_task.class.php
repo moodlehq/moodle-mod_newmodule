@@ -19,7 +19,7 @@
  *
  * @package   mod_newmodule
  * @category  backup
- * @copyright 2011 Your Name <your@email.adress>
+ * @copyright 2015 Your Name <your@email.adress>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -34,7 +34,7 @@ require_once($CFG->dirroot . '/mod/newmodule/backup/moodle2/restore_newmodule_st
  *
  * @package   mod_newmodule
  * @category  backup
- * @copyright 2011 Your Name <your@email.adress>
+ * @copyright 2015 Your Name <your@email.adress>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class restore_newmodule_activity_task extends restore_activity_task {

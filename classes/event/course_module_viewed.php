@@ -18,7 +18,7 @@
  * Defines the view event.
  *
  * @package    mod_newmodule
- * @copyright  2011 Your Name <your@email.adress>
+ * @copyright  2015 Your Name <your@email.adress>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -33,7 +33,7 @@ defined('MOODLE_INTERNAL') || die();
  * override methods get_url() and get_legacy_log_data(), too.
  *
  * @package    mod_newmodule
- * @copyright  2011 Your Name <your@email.adress>
+ * @copyright  2015 Your Name <your@email.adress>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class course_module_viewed extends \core\event\course_module_viewed {

@@ -19,7 +19,7 @@
  *
  * @package   mod_newmodule
  * @category  backup
- * @copyright 2011 Your Name <your@email.adress>
+ * @copyright 2015 Your Name <your@email.adress>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die;
  *
  * @package   mod_newmodule
  * @category  backup
- * @copyright 2011 Your Name <your@email.adress>
+ * @copyright 2015 Your Name <your@email.adress>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class backup_newmodule_activity_structure_step extends backup_activity_structure_step {
