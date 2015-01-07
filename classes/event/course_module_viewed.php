@@ -18,13 +18,20 @@
  * Defines the view event.
  *
  * @package    mod_newmodule
- * @copyright  2014 Daniel Neis Araujo
+ * @copyright  2011 Your Name <your@email.adress>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 namespace mod_newmodule\event;
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * The mod_newmodule instance list viewed event class.
+ *
+ * @package    mod_newmodule
+ * @copyright  2011 Your Name <your@email.adress>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class course_module_viewed extends \core\event\course_module_viewed {
     protected function init() {
         $this->data['objecttable'] = 'newmodule';
