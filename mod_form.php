@@ -60,7 +60,11 @@ class mod_newmodule_mod_form extends moodleform_mod {
         $mform->addHelpButton('name', 'newmodulename', 'newmodule');
 
         // Adding the standard "intro" and "introformat" fields.
-        $this->add_intro_editor();
+        if ($CFG->branch >= 29) {
+            $this->standard_intro_elements();
+        } else {
+            $this->add_intro_editor();
+        }
 
         // Adding the rest of newmodule settings, spreading all them into this fieldset
         // ... or adding more fieldsets ('header' elements) if needed for better logic.
