@@ -15,9 +15,11 @@ this module template code.
   all the instances of the string "newmodule" to your module name
   (eg "widget"). If you are using Linux, you can use the following command
   $ find . -type f -exec sed -i 's/newmodule/widget/g' {} \;
+  $ find . -type f -exec sed -i 's/NEWMODULE/WIDGET/g' {} \;
 
   On a mac, use:
   $ find . -type f -exec sed -i '' 's/newmodule/widget/g' {} \;
+  $ find . -type f -exec sed -i '' 's/NEWMODULE/WIDGET/g' {} \;
 
 * Rename the file lang/en/newmodule.php to lang/en/widget.php
   where "widget" is the name of your module
