@@ -42,6 +42,7 @@ class mod_newmodule_mod_form extends moodleform_mod {
      * Defines forms elements
      */
     public function definition() {
+        global $CFG;
 
         $mform = $this->_form;
 
@@ -53,7 +54,7 @@ class mod_newmodule_mod_form extends moodleform_mod {
         if (!empty($CFG->formatstringstriptags)) {
             $mform->setType('name', PARAM_TEXT);
         } else {
-            $mform->setType('name', PARAM_CLEAN);
+            $mform->setType('name', PARAM_CLEANHTML);
         }
         $mform->addRule('name', null, 'required', null, 'client');
         $mform->addRule('name', get_string('maximumchars', '', 255), 'maxlength', 255, 'client');
