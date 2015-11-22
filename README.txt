@@ -20,6 +20,9 @@ this module template code.
   On a mac, use:
   $ find . -type f -exec sed -i '' 's/newmodule/widget/g' {} \;
   $ find . -type f -exec sed -i '' 's/NEWMODULE/WIDGET/g' {} \;
+  In case of error run following commands:
+  export LC_CTYPE=C 
+  export LANG=C
 
 * Rename the file lang/en/newmodule.php to lang/en/widget.php
   where "widget" is the name of your module
