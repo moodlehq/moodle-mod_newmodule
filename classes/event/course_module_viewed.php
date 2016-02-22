@@ -27,7 +27,7 @@ namespace mod_newmodule\event;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * The mod_newmodule instance list viewed event class
+ * The mod_newmodule instance viewed event class
  *
  * If the view mode needs to be stored as well, you may need to
  * override methods get_url() and get_legacy_log_data(), too.
