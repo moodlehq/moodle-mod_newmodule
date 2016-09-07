@@ -115,6 +115,37 @@ function newmodule_update_instance(stdClass $newmodule, mod_newmodule_mod_form $
 }
 
 /**
+ * This standard function will check all instances of this module
+ * and make sure there are up-to-date events created for each of them.
+ * If courseid = 0, then every newmodule event in the site is checked, else
+ * only newmodule events belonging to the course specified are checked.
+ * This is only required if the module is generating calendar events.
+ *
+ * @param int $courseid Course ID
+ * @return bool
+ */
+function newmodule_refresh_events($courseid = 0) {
+    global $DB;
+
+    if ($courseid == 0) {
+        if (!$newmodules = $DB->get_records('newmodule')) {
+            return true;
+        }
+    } else {
+        if (!$newmodules = $DB->get_records('newmodule', array('course' => $courseid))) {
+            return true;
+        }
+    }
+
+    foreach ($newmodules as $newmodule) {
+        // Create a function such as the one below to deal with updating calendar events.
+        // newmodule_update_events($newmodule);
+    }
+
+    return true;
+}
+
+/**
  * Removes an instance of the newmodule from the database
  *
  * Given an ID of an instance of this module,
