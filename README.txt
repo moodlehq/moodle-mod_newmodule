@@ -21,8 +21,7 @@ this module template code.
   $ find . -type f -exec sed -i '' 's/newmodule/widget/g' {} \;
   $ find . -type f -exec sed -i '' 's/NEWMODULE/WIDGET/g' {} \;
 
-* Rename the file lang/en/newmodule.php to lang/en/widget.php
-  where "widget" is the name of your module
+* Rename the file lang/en/newmodule.php where "newmodule" is the name of your module
 
 * Rename all files in backup/moodle2/ folder by replacing "newmodule" with
   the name of your module
